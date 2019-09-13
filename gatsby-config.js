@@ -3,7 +3,7 @@ module.exports = {
     title: `Casey James Perno`,
     author: `Casey James Perno`,
     description: `Casey is a front end developer with a background in SEO and business management.`,
-    // siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `https://caseyjamesperno.com/`,
     social: {
       twitter: `sircaseyjames`,
     },
@@ -53,7 +53,7 @@ module.exports = {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
-    `gatsby-plugin-feed`,
+    // `gatsby-plugin-feed`,
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {
