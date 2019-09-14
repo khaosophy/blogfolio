@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { rhythm, scale } from "../utils/typography"
 import Header from './Header';
+import Footer from './Footer';
 
 class Layout extends React.Component {
   render() {
@@ -17,7 +18,7 @@ class Layout extends React.Component {
       >
         <Header />
         <main>{children}</main>
-        {/* todo: footer */}
+        <Footer />
       </div>
     )
   }
