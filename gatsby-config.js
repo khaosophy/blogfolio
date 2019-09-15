@@ -1,3 +1,4 @@
+const test = require('dotenv').config({path: 'variables.env'});
 module.exports = {
   siteMetadata: {
     title: `Casey James Perno`,
@@ -77,14 +78,14 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        baseUrl: "dev.caseyjamesperno.com",
-        protocol: "http",
+        baseUrl: `${process.env.BASE_URL}`,
+        protocol: `${process.env.PROTOCOL}`,
         hostingWPCOM: false,
         useACF: false,
         acfOptionPageIds: [],
         auth: {
-          htaccess_user: "cperno",
-          htaccess_pass: "superace",
+          htaccess_user: `${process.env.HTACCESS_USER}`,
+          htaccess_pass: `${process.env.HTACCESS_PASS}`,
           htaccess_sendImmediately: true,
         },
         verboseOutput: false,
