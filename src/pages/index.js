@@ -26,13 +26,7 @@ class BlogIndex extends React.Component {
                 </h3>
                 <small>{date}</small>
               </header>
-              <section>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: excerpt,
-                  }}
-                />
-              </section>
+              <section dangerouslySetInnerHTML={{ __html: excerpt }}></section>
             </article>
           )
         })}
