@@ -19,20 +19,16 @@ class BlogIndex extends React.Component {
           const { title, slug, date, wordpress_id, excerpt } = node;
           return (
             <article key={wordpress_id}>
-              <header>
-                <h3 style={{marginBottom: rhythm(1 / 4)}}>
+              <header style={{marginBottom: rhythm(1/4)}}>
+                <h3 style={{marginBottom: 0}}>
                   <Link style={{ boxShadow: `none` }} to={`/blog/${slug}`}>
                     {title}</Link>
                 </h3>
-                <small>{date}</small>
+                <small style={{color: 'gray'}}>{date}</small>
               </header>
-              <section>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: excerpt,
-                  }}
-                />
-              </section>
+              <p dangerouslySetInnerHTML={{
+                __html: excerpt,
+                }}/>
             </article>
           )
         })}

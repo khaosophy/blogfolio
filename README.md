@@ -12,3 +12,7 @@ To set this Repo up on a new machine, follow the simple steps below:
 * When finished, run `gatsby develop` to see your changes locally in the browser. You can see it at `localhost:8000`.
 * `gatsby build` will make sure you're ready to deploy (I recommend running this to make sure it doesn't fail in a future step).
 * Push our your changes to the repo, which will automatically trigger a rebuild on Netlify.
+
+## Colors
+
+Check out [this color palette](https://paletton.com/#uid=63v0u0k++JguxZLP++V+WtF+9ng) when you are ready to expand the design.
