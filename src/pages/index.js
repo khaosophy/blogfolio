@@ -20,7 +20,7 @@ class BlogIndex extends React.Component {
           return (
             <article key={wordpress_id}>
               <header style={{marginBottom: rhythm(1/2)}}>
-                <h3 style={{marginBottom: 0}}>
+                <h3 style={{marginBottom: 0, lineHeight: 1.4}}>
                   <Link style={{ boxShadow: `none` }} to={`/blog/${slug}`}>
                     {title}</Link>
                 </h3>
