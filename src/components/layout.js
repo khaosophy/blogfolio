@@ -1,17 +1,15 @@
 import React from "react"
-import { Link } from "gatsby"
-import { rhythm, scale } from "../utils/typography"
 import Header from './Header';
 import Footer from './Footer';
 
 class Layout extends React.Component {
   render() {
-    const { location, title, children } = this.props
+    const { location, title, children } = this.props;
     const containerStyles = {
       marginLeft: `auto`,
       marginRight: `auto`,
-      maxWidth: rhythm(24),
-      padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+      maxWidth: '42rem',
+      padding: `2.5rem 1.5rem`,
     }
     return (
       <React.Fragment>
