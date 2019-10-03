@@ -12,12 +12,12 @@ module.exports = {
   plugins: [
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {  //TODO: get analytics working. add ID to .env file
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     //trackingId: `${process.env.ANALYTICS_ID}`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `${process.env.ANALYTICS_ID}`,
+      },
+    },
     // `gatsby-plugin-feed`, //TODO: get RSS feed working
     `gatsby-plugin-react-helmet`,
     {
