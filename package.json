@@ -8,19 +8,19 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
-    "dotenv": "^8.1.0",
-    "gatsby": "^2.15.8",
-    "gatsby-image": "^2.2.17",
-    "gatsby-plugin-feed": "^2.3.11",
-    "gatsby-plugin-google-analytics": "^2.1.19",
-    "gatsby-plugin-react-helmet": "^3.1.6",
-    "gatsby-plugin-sharp": "^2.2.20",
-    "gatsby-plugin-typography": "^2.3.6",
-    "gatsby-source-wordpress": "^3.1.30",
-    "gatsby-transformer-sharp": "^2.2.13",
-    "prismjs": "^1.17.1",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "dotenv": "^8.2.0",
+    "gatsby": "^2.19.19",
+    "gatsby-image": "^2.2.41",
+    "gatsby-plugin-feed": "^2.3.27",
+    "gatsby-plugin-google-analytics": "^2.1.35",
+    "gatsby-plugin-react-helmet": "^3.1.22",
+    "gatsby-plugin-sharp": "^2.4.5",
+    "gatsby-plugin-typography": "^2.3.22",
+    "gatsby-source-wordpress": "^3.1.62",
+    "gatsby-transformer-sharp": "^2.3.14",
+    "prismjs": "^1.19.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "react-typography": "^0.16.19",
     "typeface-merriweather": "0.0.72",
@@ -29,7 +29,7 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "prettier": "^1.19.1"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
