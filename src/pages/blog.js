@@ -26,7 +26,10 @@ class BlogIndex extends React.Component {
                 </h3>
                 <small style={{color: 'gray'}}>{date}</small>
               </header>
-              <div dangerouslySetInnerHTML={{ __html: excerpt }}></div>
+              <div dangerouslySetInnerHTML={{ __html: excerpt }} />
+              <Link to={`/blog/${slug}`}>
+                Continue Reading...
+              </Link>
             </article>
           )
         })}
