@@ -1,11 +1,11 @@
-// src/templates/BlogPostTemplate.js
-import React from "react"
-import { graphql } from "gatsby"
+// src/templates/SinglePostTemplate.js
+import React from 'react';
+import { graphql } from 'gatsby';
 // import Img from "gatsby-image"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
-const BlogPostTemplate = ({ data }) => (
+const SinglePostTemplate = ({ data }) => (
   <Layout>
     <SEO
       title={data.wordpressPost.title}
@@ -23,8 +23,8 @@ const BlogPostTemplate = ({ data }) => (
       dangerouslySetInnerHTML={{ __html: data.wordpressPost.content }}
     />
   </Layout>
-)
-export default BlogPostTemplate
+);
+export default SinglePostTemplate;
 
 export const query = graphql`
   query($id: Int!) {
@@ -35,4 +35,4 @@ export const query = graphql`
       date(formatString: "MMMM DD, YYYY")
     }
   }
-`
+`;
