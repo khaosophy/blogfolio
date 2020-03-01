@@ -1,0 +1,17 @@
+.page__header {
+    background: #007acc;
+    color: white;
+}
+
+.page__header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 42rem;
+    padding: 2.5rem 1.5rem;
+}

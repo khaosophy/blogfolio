@@ -12,7 +12,7 @@ const Layout = (props) => {
   };
   return (
     <React.Fragment>
-      <Header style={containerStyles} />
+      <Header />
       <main style={containerStyles}>
         {children}
       </main>
