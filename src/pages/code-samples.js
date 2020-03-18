@@ -1,27 +1,23 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-
-// import Bio from "../components/bio";
+import { Link, graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import Excerpt from '../components/Excerpt';
 
-class BlogIndex extends React.Component {
+class CodeSamples extends React.Component {
   render() {
-    const { data } = this.props
-    const posts = data.allWordpressPost.edges
-
+    const { data } = this.props;
+    const posts = data.allWordpressWpCodeSamples.edges;
     return (
       <Layout>
-        <SEO title="All posts" />
-        {/* <Bio /> */}
+        <SEO title="Code Samples" />
         {posts.map(({ node }) => {
-          const { title, slug, date, wordpress_id, excerpt } = node;
+          const { title, slug, date, wordpress_id, excerpt } = node
           return (
             <Excerpt
               key={wordpress_id}
               title={title}
-              url={`/blog/${slug}`}
+              url={`/code-samples/${slug}`}
               date={date}
             >
               {excerpt}
@@ -33,11 +29,11 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default BlogIndex;
+export default CodeSamples;
 
 export const query = graphql`
   query {
-    allWordpressPost {
+    allWordpressWpCodeSamples {
       edges {
         node {
           title

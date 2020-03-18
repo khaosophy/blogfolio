@@ -49,7 +49,7 @@ module.exports = {
           "**/media",
           "**/tags",
           "**/taxonomies",
-          "**/users",
+          "**/code-samples",
         ],
         excludedRoutes: [],
         normalizer: function({ entities }) {
