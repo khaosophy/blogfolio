@@ -1,9 +1,9 @@
-// src/templates/SinglePostTemplate.js
 import React from 'react';
-import { graphql } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 // import Img from "gatsby-image"
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
+import { rhythm } from '../utils/typography';
 
 const SinglePostTemplate = ({ data }) => (
   <Layout>
@@ -11,8 +11,13 @@ const SinglePostTemplate = ({ data }) => (
       title={data.wordpressPost.title}
       description={data.wordpressPost.excerpt}
     />
-    <h1>{data.wordpressPost.title}</h1>
-    <p>Published {data.wordpressPost.date}</p>
+    <small style={{ position: 'absolute' }}>
+      <Link to="/">
+        ← Back to Blog
+      </Link>
+    </small>
+    <h1 style={{ marginBottom: rhythm(1/4) }}>{data.wordpressPost.title}</h1>
+    <small style={{color: 'gray'}}>Published {data.wordpressPost.date}</small>
     {/* <Img
       sizes={data.wordpressPost.acf.feat_img.localFile.childImageSharp.sizes}
       alt={data.wordpressPost.title}

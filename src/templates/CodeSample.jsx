@@ -1,9 +1,8 @@
-// src/templates/SinglePostTemplate.js
 import React from 'react';
-import { graphql } from 'gatsby';
-// import Img from "gatsby-image"
+import { Link, graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
+import { rhythm } from '../utils/typography';
 
 const CodeSampleTemplate = ({ data }) => (
   <Layout>
@@ -11,13 +10,13 @@ const CodeSampleTemplate = ({ data }) => (
       title={data.wordpressWpCodeSamples.title}
       description={data.wordpressWpCodeSamples.excerpt}
     />
-    <h1>{data.wordpressWpCodeSamples.title}</h1>
-    <p>Published {data.wordpressWpCodeSamples.date}</p>
-    {/* <Img
-      sizes={data.wordpressPost.acf.feat_img.localFile.childImageSharp.sizes}
-      alt={data.wordpressPost.title}
-      style={{ maxHeight: 450 }}
-    /> */}
+    <small style={{ position: 'absolute' }}>
+      <Link to="/code-samples">
+        ← Back to Code Samples
+      </Link>
+    </small>
+    <h1 style={{ marginBottom: rhythm(1/4) }}>{data.wordpressWpCodeSamples.title}</h1>
+    <small style={{color: 'gray'}}>Published {data.wordpressWpCodeSamples.date}</small>
     <div
       style={{ marginTop: 20 }}
       dangerouslySetInnerHTML={{ __html: data.wordpressWpCodeSamples.content }}
