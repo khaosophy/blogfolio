@@ -4,3 +4,7 @@ main {
     max-width: 50rem;
     padding: 2.5rem 1.5rem;
 }
+
+article.excerpt {
+    max-width: 35rem;
+}
