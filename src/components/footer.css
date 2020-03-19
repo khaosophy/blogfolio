@@ -1,0 +1,11 @@
+.page__footer {
+    background: #007acc;
+    color: white;
+}
+
+.page__footer .container {
+    /* display: flex;
+    align-items: center;
+    justify-content: space-between; */
+    max-width: 50rem;
+}

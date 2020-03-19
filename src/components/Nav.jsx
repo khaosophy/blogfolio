@@ -6,8 +6,13 @@ const Nav = () => (
   <nav className="main-nav">
     <ul>
       <li>
-        <Link activeStyle={{ display: 'none' }} to="/">
-          Back to Blog
+        <Link to="/" activeClassName='active'>
+          Blog
+        </Link>
+      </li>
+      <li>
+        <Link to="/code-samples" activeClassName='active'>
+          Code Samples
         </Link>
       </li>
     </ul>

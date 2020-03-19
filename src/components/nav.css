@@ -6,12 +6,24 @@
 .main-nav ul {
     list-style: none;
     margin: 0;
+    display: flex;
 }
 
 .main-nav li {
     margin: 0;
 }
 
+.main-nav li:not(:last-of-type) {
+    margin-right: 0.75rem;
+    padding-right: 0.75rem;
+    border-right: 1px solid;
+}
+
 .main-nav a {
     color: white;
+    box-shadow: none;
+}
+
+.main-nav a.active {
+    box-shadow: 0 1px 0 0 currentColor;
 }

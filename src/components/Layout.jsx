@@ -1,24 +1,16 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import './main.css'
 
-const Layout = (props) => {
-  const { location, title, children } = props;
-  const containerStyles = {
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    maxWidth: '42rem',
-    padding: '2.5rem 1.5rem',
-  };
-  return (
-    <React.Fragment>
-      <Header />
-      <main style={containerStyles}>
-        {children}
-      </main>
-      <Footer style={containerStyles} />
-    </React.Fragment>
-  );
-};
+const Layout = (props) => (
+  <React.Fragment>
+    <Header />
+    <main>
+      {props.children}
+    </main>
+    <Footer />
+  </React.Fragment>
+);
 
 export default Layout;
