@@ -1,12 +1,8 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "caspers-blogfolio",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
+  "description": "A blog and portfolio developed in Gatsby, content in WordPress, and deployed over Netlify",
+  "author": "Casey James Perno <ace.caseyjames@gmail.com>",
   "dependencies": {
     "dotenv": "^8.2.0",
     "gatsby": "^2.19.19",
