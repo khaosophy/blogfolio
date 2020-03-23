@@ -17,7 +17,7 @@ const Footer = (props) => {
   const date = new Date().getFullYear();
   return (
     <footer className="page__footer">
-      <div class="container" style={props.style}>
+      <div className="container" style={props.style}>
         <span className="copyright">Copyright &copy; {date} {site.siteMetadata.author}</span>
       </div>
     </footer>
