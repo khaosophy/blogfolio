@@ -21,3 +21,16 @@ figcaption {
 small {
     color: #767676; /* todo: extract to variable (see figcaption above) */
 }
+
+code {
+    background: #e0f2ff;
+    padding: 0.15em 0.25em;
+}
+
+pre code {
+    display: block;
+    background: #f3faff;
+    padding: 1rem 1.5rem;
+    border: 1px solid #e0f2ff;
+    overflow-x: auto;
+}
