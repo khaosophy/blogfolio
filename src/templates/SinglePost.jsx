@@ -17,7 +17,7 @@ const SinglePostTemplate = ({ data }) => (
       </Link>
     </small>
     <h1 style={{ marginBottom: rhythm(1/4) }}>{data.wordpressPost.title}</h1>
-    <small style={{color: 'gray'}}>Published {data.wordpressPost.date}</small>
+    <small>Published {data.wordpressPost.date}</small>
     {/* <Img
       sizes={data.wordpressPost.acf.feat_img.localFile.childImageSharp.sizes}
       alt={data.wordpressPost.title}

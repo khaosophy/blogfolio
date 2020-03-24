@@ -8,3 +8,16 @@ main {
 article.excerpt {
     max-width: 35rem;
 }
+
+figure img {
+    margin-bottom: 0;
+}
+
+figcaption {
+    color: #767676; /* lightest gray that can be used on a white background and pass readability tests */
+    font-size: 0.75rem;
+}
+
+small {
+    color: #767676; /* todo: extract to variable (see figcaption above) */
+}
