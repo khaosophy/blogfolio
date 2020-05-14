@@ -2,12 +2,12 @@ import React from 'react';
 import './header.css';
 import Nav from './Nav';
 
-const Header = (props) => {
-  const containerStyles = props.style;
+const Header = () => {
   return (
     <header className="page__header">
       <div className="container">
-        <h1 style={{margin: 0}}>Casey James Perno</h1>
+        <h1 className="page__title">Casey James Perno</h1>
+        {/* <p className="header__subtitle">Developer</p> */}
         <Nav />
       </div>
     </header>

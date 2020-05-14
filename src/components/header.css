@@ -11,8 +11,26 @@
 }
 
 .page__header .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     max-width: 50rem;
+}
+
+.page__header .main-nav {
+    margin-top: 1rem;
+}
+
+@media screen and (min-width: 740px){
+    /* todo: can this be done better in Grid, so that automatically flows, instead of a breakpoint? */
+    .page__header .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .page__header .main-nav {
+        margin-top: 0;
+    }
+}
+
+.page__title {
+    margin: 0;
+    font-size: 2rem;
 }
