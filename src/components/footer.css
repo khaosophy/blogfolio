@@ -1,6 +1,7 @@
 .page__footer {
     background: #007acc;
     color: white;
+    margin-top: 3.5rem; /* to better match spacing between header and first element */
 }
 
 .page__footer .container {
