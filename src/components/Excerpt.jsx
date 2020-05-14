@@ -12,7 +12,7 @@ const Excerpt = (props) => {
             {props.title}
           </Link>
         </h3>
-        <small style={{color: 'gray'}}>{props.date}</small>
+        <small>{props.date}</small>
       </header>
       <div dangerouslySetInnerHTML={{ __html: props.children }} />
       <Link to={props.url}>

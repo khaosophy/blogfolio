@@ -16,7 +16,7 @@ const CodeSampleTemplate = ({ data }) => (
       </Link>
     </small>
     <h1 style={{ marginBottom: rhythm(1/4) }}>{data.wordpressWpCodeSamples.title}</h1>
-    <small style={{color: 'gray'}}>Published {data.wordpressWpCodeSamples.date}</small>
+    <small>Published {data.wordpressWpCodeSamples.date}</small>
     <div
       style={{ marginTop: 20 }}
       dangerouslySetInnerHTML={{ __html: data.wordpressWpCodeSamples.content }}
