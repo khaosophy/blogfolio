@@ -7,19 +7,19 @@ import { rhythm } from '../utils/typography';
 const SpeakerSessionTemplate = ({ data }) => (
   <Layout>
     <SEO
-      title={data.wordpressWpSpeakerSession.title}
-      description={data.wordpressWpSpeakerSession.excerpt}
+      title={data.wordpressWpSpeakerSessions.title}
+      description={data.wordpressWpSpeakerSessions.excerpt}
     />
     <small style={{ position: 'absolute' }}>
       <Link to="/speaker-sessions">
         ← Back to Speaker Sessions
       </Link>
     </small>
-    <h1 style={{ marginBottom: rhythm(1/4) }}>{data.wordpressWpSpeakerSession.title}</h1>
-    <small>Published {data.wordpressWpSpeakerSession.date}</small>
+    <h1 style={{ marginBottom: rhythm(1/4) }}>{data.wordpressWpSpeakerSessions.title}</h1>
+    <small>Published {data.wordpressWpSpeakerSessions.date}</small>
     <div
       style={{ marginTop: 20 }}
-      dangerouslySetInnerHTML={{ __html: data.wordpressWpSpeakerSession.content }}
+      dangerouslySetInnerHTML={{ __html: data.wordpressWpSpeakerSessions.content }}
     />
   </Layout>
 );

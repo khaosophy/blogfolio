@@ -61,12 +61,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   const SpeakerSessions = result.data.allWordpressWpSpeakerSessions.edges;
-  SpeakerSessions.forEach((sample) => {
+  SpeakerSessions.forEach((session) => {
     createPage({
-      path: `/speaker-sesssions/${sample.node.slug}`,
+      path: `/speaker-sessions/${session.node.slug}`,
       component: SpeakerSessionTemplate,
       context: {
-        id: sample.node.wordpress_id,
+        id: session.node.wordpress_id,
       }
     })
   })
