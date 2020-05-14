@@ -50,6 +50,7 @@ module.exports = {
           "**/tags",
           "**/taxonomies",
           "**/code-samples",
+          "**/speaker-sessions",
         ],
         excludedRoutes: [],
         normalizer: function({ entities }) {

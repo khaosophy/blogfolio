@@ -4,6 +4,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const SinglePostTemplate = path.resolve('./src/templates/SinglePost.jsx');
   const CodeSampleTemplate = path.resolve('./src/templates/CodeSample.jsx');
+  const SpeakerSessionTemplate = path.resolve('./src/templates/SpeakerSession.jsx');
   const result = await graphql(`
     {
       allWordpressPost {
@@ -15,6 +16,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       }
       allWordpressWpCodeSamples {
+        edges {
+          node {
+            slug
+            wordpress_id
+          }
+        }
+      }
+      allWordpressWpSpeakerSessions {
         edges {
           node {
             slug
@@ -45,6 +54,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     createPage({
       path: `/code-samples/${sample.node.slug}`,
       component: CodeSampleTemplate,
+      context: {
+        id: sample.node.wordpress_id,
+      }
+    })
+  })
+
+  const SpeakerSessions = result.data.allWordpressWpSpeakerSessions.edges;
+  SpeakerSessions.forEach((sample) => {
+    createPage({
+      path: `/speaker-sesssions/${sample.node.slug}`,
+      component: SpeakerSessionTemplate,
       context: {
         id: sample.node.wordpress_id,
       }

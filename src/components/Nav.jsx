@@ -15,6 +15,11 @@ const Nav = () => (
           Code Samples
         </Link>
       </li>
+      <li>
+        <Link to="/speaker-sessions" activeClassName='active'>
+          Speaker Sessions
+        </Link>
+      </li>
     </ul>
   </nav>
 );
