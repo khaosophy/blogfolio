@@ -12,7 +12,7 @@ const Excerpt = (props) => {
             {props.title}
           </Link>
         </h3>
-        <small>{props.date}</small>
+        {props.date && <small>{props.date}</small>}
       </header>
       <div dangerouslySetInnerHTML={{ __html: props.children }} />
       <Link to={props.url}>
@@ -32,6 +32,7 @@ Excerpt.propTypes = {
   children: PropTypes.string,
   date: PropTypes.string,
   continueText: PropTypes.string,
+  postType: PropTypes.string,
 }
 
 export default Excerpt;

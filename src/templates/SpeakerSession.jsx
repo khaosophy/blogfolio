@@ -4,6 +4,12 @@ import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import { rhythm } from '../utils/typography';
 
+/**
+ * TODO
+ * If there is no date, or it is in the future, continueText = "Sign Up Today"
+ * Otherwise, continueText = "Watch the Talk"
+ */
+
 const SpeakerSessionTemplate = ({ data }) => (
   <Layout>
     <SEO

@@ -32,7 +32,7 @@ module.exports = {
         baseUrl: `${process.env.BASE_URL}`,
         protocol: `${process.env.PROTOCOL}`,
         hostingWPCOM: false,
-        useACF: false,
+        useACF: true,
         acfOptionPageIds: [],
         auth: {
           htaccess_user: `${process.env.HTACCESS_USER}`,
