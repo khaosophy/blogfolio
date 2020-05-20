@@ -1,14 +1,31 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import { moment } from 'moment';
+import { getEventDateString } from '../utils/common';
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import { rhythm } from '../utils/typography';
 
-/**
- * TODO
- * If there is no date, or it is in the future, continueText = "Sign Up Today"
- * Otherwise, continueText = "Watch the Talk"
- */
+const SpeakerSessionCTA = (props) => {
+  const styles = {
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+  }
+  const isEventPast = new Date() > new Date(props.sessionDate);
+  if(isEventPast){
+    if(props.sessionRecording){
+      return <a href={props.sessionRecording}>Click Here to Watch</a>
+    } else {
+      return <p style={styles}>Check Back Soon to Watch Recording</p>
+    }
+  } else {
+    if(props.sessionRegistration){
+      return <a href={props.sessionRegistration}>Click Here to Register</a>
+    } else {
+      return <p style={styles}>Check Back Soon for Registration</p>
+    }
+  }
+}
 
 const SpeakerSessionTemplate = ({ data }) => (
   <Layout>
@@ -22,10 +39,15 @@ const SpeakerSessionTemplate = ({ data }) => (
       </Link>
     </small>
     <h1 style={{ marginBottom: rhythm(1/4) }}>{data.wordpressWpSpeakerSessions.title}</h1>
-    <small>Published {data.wordpressWpSpeakerSessions.date}</small>
+    <small>{getEventDateString(data.wordpressWpSpeakerSessions.acf.talk_date)}</small>
     <div
       style={{ marginTop: 20 }}
       dangerouslySetInnerHTML={{ __html: data.wordpressWpSpeakerSessions.content }}
+    />
+    <SpeakerSessionCTA 
+      sessionDate={data.wordpressWpSpeakerSessions.acf.talk_date}
+      sessionRecording={data.wordpressWpSpeakerSessions.acf.talk_recording}
+      sessionRegistration={data.wordpressWpSpeakerSessions.acf.talk_registration}
     />
   </Layout>
 );
@@ -38,6 +60,13 @@ export const query = graphql`
       content
       excerpt
       date(formatString: "MMMM DD, YYYY")
+      acf {
+        talk_date
+        talk_end
+        talk_recording
+        talk_registration
+        talk_start
+      }
     }
   }
 `;
