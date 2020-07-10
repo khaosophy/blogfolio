@@ -10,11 +10,11 @@ const Nav = () => (
           Blog
         </Link>
       </li>
-      <li>
+      {/* <li>
         <Link to="/code-samples" activeClassName='active'>
           Code Samples
         </Link>
-      </li>
+      </li> */}
       <li>
         <Link to="/speaker-sessions" activeClassName='active'>
           Speaker Sessions
