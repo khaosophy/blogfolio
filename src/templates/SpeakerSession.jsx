@@ -7,50 +7,79 @@ import SEO from '../components/seo';
 import { rhythm } from '../utils/typography';
 
 const SpeakerSessionCTA = (props) => {
+  /**
+   * This component handles the logic for what to show under the talk description.
+   */
   const styles = {
     fontWeight: 'bold',
     fontStyle: 'italic',
   }
   const isEventPast = new Date() > new Date(props.sessionDate);
-  if(isEventPast){
-    if(props.sessionRecording){
-      return <a href={props.sessionRecording}>Click Here to Watch</a>
-    } else {
-      return <p style={styles}>Check Back Soon to Watch Recording</p>
-    }
+  const { isRecorded, sessionRecording, sessionRegistration } = props;
+
+  if(isEventPast && isRecorded && sessionRecording){
+    return <a href={sessionRecording}>Click Here to Watch</a>
+  } else if(isEventPast && isRecorded && !sessionRecording) {
+    return <p style={styles}>Check Back Soon to Watch Recording</p>
+  } else if(!isEventPast && sessionRegistration) {
+    return <a href={sessionRegistration}>Click Here to Register</a>
+  } else if(!isEventPast && !sessionRegistration) {
+    return <p style={styles}>Check Back Soon for Registration</p>
   } else {
-    if(props.sessionRegistration){
-      return <a href={props.sessionRegistration}>Click Here to Register</a>
-    } else {
-      return <p style={styles}>Check Back Soon for Registration</p>
-    }
+    return null;
   }
 }
 
-const SpeakerSessionTemplate = ({ data }) => (
-  <Layout>
-    <SEO
-      title={data.wordpressWpSpeakerSessions.title}
-      description={data.wordpressWpSpeakerSessions.excerpt}
-    />
-    <small style={{ position: 'absolute' }}>
-      <Link to="/speaker-sessions">
-        ← Back to Speaker Sessions
-      </Link>
-    </small>
-    <h1 style={{ marginBottom: rhythm(1/4) }}>{data.wordpressWpSpeakerSessions.title}</h1>
-    <small>{getEventDateString(data.wordpressWpSpeakerSessions.acf.talk_date)}</small>
-    <div
-      style={{ marginTop: 20 }}
-      dangerouslySetInnerHTML={{ __html: data.wordpressWpSpeakerSessions.content }}
-    />
-    <SpeakerSessionCTA 
-      sessionDate={data.wordpressWpSpeakerSessions.acf.talk_date}
-      sessionRecording={data.wordpressWpSpeakerSessions.acf.talk_recording}
-      sessionRegistration={data.wordpressWpSpeakerSessions.acf.talk_registration}
-    />
-  </Layout>
-);
+const SpeakerSessionTemplate = ({ data }) => {
+  const {
+    title,
+    excerpt,
+    content,
+    acf,
+  } = data.wordpressWpSpeakerSessions;
+
+// const {
+//   talk_date,
+//   talk_start,
+//   talk_end,
+//   talk_registration,
+//   talk_is_recorded,
+//   talk_recording,
+//   talk_resources,
+// } = acf;
+
+  return (
+    <Layout>
+      <SEO
+        title={title}
+        description={excerpt}
+      />
+      <small style={{ position: 'absolute' }}>
+        <Link to="/speaker-sessions">
+          ← Back to Speaker Sessions
+        </Link>
+      </small>
+      <h1 style={{ marginBottom: rhythm(1/4) }}>{title}</h1>
+      <small>{getEventDateString(acf.talk_date)}</small>
+      <div
+        style={{ marginTop: 20 }}
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
+      <SpeakerSessionCTA 
+        sessionDate={acf.talk_date}
+        isRecorded={acf.talk_is_recorded}
+        sessionRecording={acf.talk_recording}
+        sessionRegistration={acf.talk_registration}
+      />
+      {(acf.talk_resources && acf.talk_resources !== '') &&
+        <div 
+          style={{ marginTop: 20, paddingTop: 20, borderTop: '1px solid #007acc' }}
+          dangerouslySetInnerHTML={{ __html: acf.talk_resources}}
+        />
+      }
+    </Layout>
+  )
+};
 export default SpeakerSessionTemplate;
 
 export const query = graphql`
@@ -66,6 +95,8 @@ export const query = graphql`
         talk_recording
         talk_registration
         talk_start
+        talk_is_recorded
+        talk_resources
       }
     }
   }
