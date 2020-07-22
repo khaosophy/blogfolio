@@ -5,6 +5,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import Excerpt from '../components/Excerpt';
+import PostList from '../components/PostList';
 
 class BlogIndex extends React.Component {
   render() {
@@ -14,20 +15,7 @@ class BlogIndex extends React.Component {
     return (
       <Layout>
         <SEO title="All posts" />
-        {/* <Bio /> */}
-        {posts.map(({ node }) => {
-          const { title, slug, date, wordpress_id, excerpt } = node;
-          return (
-            <Excerpt
-              key={wordpress_id}
-              title={title}
-              url={`/blog/${slug}`}
-              date={date}
-            >
-              {excerpt}
-            </Excerpt>
-          )
-        })}
+        <PostList>{posts}</PostList>
       </Layout>
     )
   }
