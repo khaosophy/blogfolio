@@ -38,16 +38,6 @@ const SpeakerSessionTemplate = ({ data }) => {
     acf,
   } = data.wordpressWpSpeakerSessions;
 
-// const {
-//   talk_date,
-//   talk_start,
-//   talk_end,
-//   talk_registration,
-//   talk_is_recorded,
-//   talk_recording,
-//   talk_resources,
-// } = acf;
-
   return (
     <Layout>
       <SEO

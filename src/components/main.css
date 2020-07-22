@@ -44,3 +44,15 @@ pre code {
     border: 1px solid #e0f2ff;
     overflow-x: auto;
 }
+
+/* handle styles for CodePen embeds */
+@media screen and (min-width: 1160px){
+    .wp-block-cp-codepen-gutenberg-embed-block.cp_embed_wrapper {
+        width: 150%;
+        position: relative;
+        left: -25%;
+    }
+}
+.wp-block-cp-codepen-gutenberg-embed-block.cp_embed_wrapper > iframe {
+    height: 600px;
+}
