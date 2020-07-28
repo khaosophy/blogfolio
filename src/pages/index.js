@@ -33,6 +33,7 @@ export const query = graphql`
           excerpt
           wordpress_id
           date(formatString: "MMMM DD, YYYY")
+          type
         }
       }
     }
