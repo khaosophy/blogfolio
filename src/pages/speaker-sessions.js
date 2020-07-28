@@ -12,7 +12,7 @@ class SpeakerSessions extends React.Component {
 
     return (
       <Layout>
-        <SEO title="Code Samples" />
+        <SEO title="Speaker Sessions" />
         {posts.map(({ node }) => {
           const { wordpress_id, type, title, slug, excerpt } = node;
           const { talk_date } = node.acf;
