@@ -1,9 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { getEventDateString } from '../utils/common';
 import Layout from '../components/Layout';
+import PostList from '../components/PostList';
 import SEO from '../components/seo';
-import Excerpt from '../components/Excerpt';
 
 class SpeakerSessions extends React.Component {
   render() {
@@ -13,23 +12,7 @@ class SpeakerSessions extends React.Component {
     return (
       <Layout>
         <SEO title="Speaker Sessions" />
-        {posts.map(({ node }) => {
-          const { wordpress_id, type, title, slug, excerpt } = node;
-          const { talk_date } = node.acf;
-          
-          return (
-            <Excerpt
-              key={wordpress_id}
-              postType={type}
-              title={title}
-              url={`/speaker-sessions/${slug}`}
-              date={getEventDateString(talk_date)}
-              continueText="Learn More..."
-            >
-              {excerpt}
-            </Excerpt>
-          )
-        })}
+        <PostList>{posts}</PostList>
       </Layout>
     )
   }
