@@ -19,7 +19,7 @@ const Pagination = (props) => {
     )}
     {Array.from({ length: numPages }, (_, i) => (
       <Link
-        className="pagination__number"
+        className={`pagination__number ${((currentPage - 1) === i) ? 'pagination__number--active' : ''}`}
         key={`pagination-number${i + 1}`}
         to={`/${i === 0 ? pathRoot : `${pathRoot}/${i + 1}`}`}
       >

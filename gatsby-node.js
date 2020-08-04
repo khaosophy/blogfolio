@@ -40,7 +40,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const BlogPosts = result.data.allWordpressPost.edges;
-  const postsPerPage = 6;
+  const postsPerPage = 5;
   const numPages = Math.ceil(BlogPosts.length / postsPerPage);
 
   Array.from({ length: numPages }).forEach((page, i) => {
