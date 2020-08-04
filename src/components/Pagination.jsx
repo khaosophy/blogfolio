@@ -4,17 +4,36 @@ import { Link } from 'gatsby';
 import './pagination.css'
 
 const Pagination = (props) => {
+  const { currentPage, numPages, pathRoot } = props;
+  const isFirst = (currentPage === 1);
+  const isLast = (currentPage === numPages);
   return (
     <div className="pagination">
-    {Array.from({ length: props.numPages }, (_, i) => (
+    {!isFirst && (
+      <Link
+        className="pagination__previous"
+        to={`/${pathRoot}/${(currentPage - 1 === 1) ? "" : currentPage - 1}`}
+      >
+        Previous Page
+      </Link>
+    )}
+    {Array.from({ length: numPages }, (_, i) => (
       <Link
         className="pagination__number"
         key={`pagination-number${i + 1}`}
-        to={`/${i === 0 ? props.pathRoot : `${props.pathRoot}/${i + 1}`}`}
+        to={`/${i === 0 ? pathRoot : `${pathRoot}/${i + 1}`}`}
       >
         {i + 1}
       </Link>
     ))}
+    {!isLast && (
+      <Link
+        className="pagination__next"
+        to={`/${pathRoot}/${(currentPage + 1)}`}
+      >
+        Next Page
+      </Link>
+    )}
     </div>
   )
 }
