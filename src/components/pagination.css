@@ -1,0 +1,8 @@
+.pagination {
+  display: flex;
+}
+
+.pagination__number {
+  /* display: inline-block; */
+  border: blue
+}
