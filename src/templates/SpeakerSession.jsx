@@ -14,7 +14,7 @@ const SpeakerSessionCTA = (props) => {
     fontWeight: 'bold',
     fontStyle: 'italic',
   }
-  const isEventPast = new Date() > new Date(props.sessionDate);
+  const isEventPast = new Date() >= new Date(props.sessionDate);
   const { isRecorded, sessionRecording, sessionRegistration } = props;
 
   if(isEventPast && isRecorded && sessionRecording){
