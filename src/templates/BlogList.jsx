@@ -8,7 +8,6 @@ import { getEventDateString } from '../utils/common';
 
 class BlogList extends React.Component {
   render() {
-    console.log(this.props);
     const posts = this.props.data.allWordpressPost.edges;
     const { currentPage, numPages } = this.props.pageContext;
 
