@@ -1,0 +1,58 @@
+html, body, body > div, #gatsby-focus-wrapper {
+    min-height: 100vh;
+}
+
+#gatsby-focus-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 50rem;
+    padding: 2.5rem 1.5rem;
+}
+
+article.excerpt {
+    max-width: 35rem;
+}
+
+figure img {
+    margin-bottom: 0;
+}
+
+figcaption {
+    color: #767676; /* lightest gray that can be used on a white background and pass readability tests */
+    font-size: 0.75rem;
+}
+
+small {
+    color: #767676; /* todo: extract to variable (see figcaption above) */
+}
+
+code {
+    background: #e0f2ff;
+    padding: 0.15em 0.25em;
+}
+
+pre code {
+    display: block;
+    background: #f3faff;
+    padding: 1rem 1.5rem;
+    border: 1px solid #e0f2ff;
+    overflow-x: auto;
+}
+
+/* handle styles for CodePen embeds */
+@media screen and (min-width: 1160px){
+    .wp-block-cp-codepen-gutenberg-embed-block.cp_embed_wrapper {
+        width: 150%;
+        position: relative;
+        left: -25%;
+    }
+}
+.wp-block-cp-codepen-gutenberg-embed-block.cp_embed_wrapper > iframe {
+    height: 600px;
+}

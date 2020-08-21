@@ -1,7 +1,8 @@
 import React from 'react';
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from 'gatsby';
+import './footer.css';
 
-const Footer = props => {
+const Footer = (props) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -15,8 +16,8 @@ const Footer = props => {
   )
   const date = new Date().getFullYear();
   return (
-    <footer style={{background: `#007acc`, color: `white`}}>
-      <div style={props.style}>
+    <footer className="page__footer">
+      <div className="container" style={props.style}>
         <span className="copyright">Copyright &copy; {date} {site.siteMetadata.author}</span>
       </div>
     </footer>
