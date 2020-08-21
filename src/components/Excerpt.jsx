@@ -5,9 +5,9 @@ import { rhythm } from '../utils/typography';
 
 const Excerpt = (props) => {
   return (
-    <article className="excerpt">
+    <article className="excerpt" style={{ marginTop: '3.5rem' }}>
       <header style={{marginBottom: rhythm(1/2)}}>
-        <h3 style={{marginBottom: 0, lineHeight: 1.4}}>
+        <h3 style={{margin: 0, lineHeight: 1.4}}>
           <Link style={{ boxShadow: `none` }} to={props.url}>
             {props.title}
           </Link>
