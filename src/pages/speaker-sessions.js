@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import moment from 'moment';
 import Layout from '../components/Layout';
 import PostList from '../components/PostList';
 import SEO from '../components/seo';
@@ -7,8 +8,8 @@ import SEO from '../components/seo';
 class SpeakerSessions extends React.Component {
   render() {
     const talks = this.props.data.allWordpressWpSpeakerSessions.edges;
-    const pastTalks = talks.filter(talk => new Date(talk.node.acf.talk_date) < new Date());
-    const upcomingTalks = talks.filter(talk => new Date(talk.node.acf.talk_date) > new Date());
+    const pastTalks = talks.filter(talk => moment(talk.node.acf.talk_date).isBefore(moment(), 'day'))
+    const upcomingTalks = talks.filter(talk => moment(talk.node.acf.talk_date).isSameOrAfter(moment(), 'days'));
 
     return (
       <Layout>
