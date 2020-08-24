@@ -1,10 +1,9 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import Excerpt from '../components/Excerpt';
 import Pagination from '../components/Pagination';
-import { getEventDateString } from '../utils/common';
 
 class BlogList extends React.Component {
   render() {
