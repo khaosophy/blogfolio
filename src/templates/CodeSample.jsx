@@ -7,27 +7,27 @@ import { rhythm } from '../utils/typography';
 const CodeSampleTemplate = ({ data }) => (
   <Layout>
     <SEO
-      title={data.wordpressWpCodeSamples.title}
-      description={data.wordpressWpCodeSamples.excerpt}
+      title={data.wpCodeSample.title}
+      description={data.wpCodeSample.excerpt}
     />
     <small style={{ position: 'absolute' }}>
       <Link to="/code-samples">
         ← Back to Code Samples
       </Link>
     </small>
-    <h1 style={{ marginBottom: rhythm(1/4) }}>{data.wordpressWpCodeSamples.title}</h1>
-    <small>Published {data.wordpressWpCodeSamples.date}</small>
+    <h1 style={{ marginBottom: rhythm(1/4) }}>{data.wpCodeSample.title}</h1>
+    <small>Published {data.wpCodeSample.date}</small>
     <div
       style={{ marginTop: 20 }}
-      dangerouslySetInnerHTML={{ __html: data.wordpressWpCodeSamples.content }}
+      dangerouslySetInnerHTML={{ __html: data.wpCodeSample.content }}
     />
   </Layout>
 );
 export default CodeSampleTemplate;
 
 export const query = graphql`
-  query($id: Int!) {
-    wordpressWpCodeSamples(wordpress_id: { eq: $id }) {
+  query($id: String!) {
+    wpCodeSample(id: { eq: $id }) {
       title
       content
       excerpt

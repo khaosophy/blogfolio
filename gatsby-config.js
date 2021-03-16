@@ -29,6 +29,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
+        url: 'http://wp.khaosophy.com/graphql',
         baseUrl: `${process.env.BASE_URL}`,
         protocol: `${process.env.PROTOCOL}`,
         hostingWPCOM: false,

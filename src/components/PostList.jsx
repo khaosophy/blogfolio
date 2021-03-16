@@ -5,12 +5,12 @@ import { getEventDateString } from '../utils/common';
 class PostList extends React.Component {
   render() {    
     let urlCategory = '';
-    const example = this.props.children[0].node;
-    switch(example.type) {
-      case 'cjp_speaker_session':
+    const example = this.props.children[0];
+    switch(example.nodeType) {
+      case 'SpeakerSession':
         urlCategory = 'speaker-sessions';
         break;
-      case 'cjp_code_sample':
+      case 'CodeSample':
         urlCategory = 'code-samples';
         break;
       default:
@@ -20,16 +20,16 @@ class PostList extends React.Component {
 
     return (
       <React.Fragment>
-      {this.props.children.map(({ node }) => {
+      {this.props.children.map((post) => {
         return (
           <Excerpt
-            key={node.wordpress_id}
-            title={node.title}
-            url={`/${urlCategory}/${node.slug}`}
-            date={node.type === 'cjp_speaker_session' ? getEventDateString(node.acf.talk_date) : node.date}
-            continueText={node.type === 'cjp_speaker_session' ? "Learn More..." : "Continue Reading..."}
+            key={post.id}
+            title={post.title}
+            url={`/${urlCategory}/${post.slug}`}
+            date={post.nodeType === 'SpeakerSession' ? getEventDateString(post.metaInfo.talkDate) : post.date}
+            continueText={post.nodeType === 'SpeakerSession' ? "Learn More..." : "Continue Reading..."}
           >
-            {node.excerpt}
+            {post.excerpt}
           </Excerpt>
         )
       })}

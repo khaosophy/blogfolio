@@ -6,7 +6,7 @@ import PostList from '../components/PostList';
 
 class CodeSamples extends React.Component {
   render() {
-    const posts = this.props.data.allWordpressWpCodeSamples.edges;
+    const posts = this.props.data.allWpCodeSample.nodes;
     return (
       <Layout>
         <SEO title="Code Samples" />
@@ -19,17 +19,15 @@ class CodeSamples extends React.Component {
 export default CodeSamples;
 
 export const query = graphql`
-  query {
-    allWordpressWpCodeSamples {
-      edges {
-        node {
-          title
-          slug
-          excerpt
-          wordpress_id
-          date(formatString: "MMMM DD, YYYY")
-          type
-        }
+  query AllCodeSamples {
+    allWpCodeSample {
+      nodes {
+        title
+        slug
+        excerpt
+        id
+        date(formatString: "MMMM DD, YYYY")
+        nodeType
       }
     }
   }

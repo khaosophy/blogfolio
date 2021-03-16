@@ -1,4 +1,4 @@
-# blogfolio
+# Blogfolio
 My personal website for blogging, code samples, and portfolio projects
 
 ## Setting Workflow on a New Environment

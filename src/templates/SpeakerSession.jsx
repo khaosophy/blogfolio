@@ -34,8 +34,8 @@ const SpeakerSessionTemplate = ({ data }) => {
     title,
     excerpt,
     content,
-    acf,
-  } = data.wordpressWpSpeakerSessions;
+    metaInfo,
+  } = data.wpSpeakerSession;
 
   return (
     <Layout>
@@ -49,21 +49,21 @@ const SpeakerSessionTemplate = ({ data }) => {
         </Link>
       </small>
       <h1 style={{ marginBottom: rhythm(1/4) }}>{title}</h1>
-      <small>{getEventDateString(acf.talk_date)}</small>
+      <small>{getEventDateString(metaInfo.talkDate)}</small>
       <div
         style={{ marginTop: 20 }}
         dangerouslySetInnerHTML={{ __html: content }}
       />
       <SpeakerSessionCTA 
-        sessionDate={acf.talk_date}
-        isRecorded={acf.talk_is_recorded}
-        sessionRecording={acf.talk_recording}
-        sessionRegistration={acf.talk_registration}
+        sessionDate={metaInfo.talkDate}
+        isRecorded={metaInfo.talkIsRecorded}
+        sessionRecording={metaInfo.talkRecording}
+        sessionRegistration={metaInfo.talkRegistration}
       />
-      {(acf.talk_resources && acf.talk_resources !== '') &&
+      {(metaInfo.talkResources && metaInfo.talkResources !== '') &&
         <div 
           style={{ marginTop: 20, paddingTop: 20, borderTop: '1px solid #007acc' }}
-          dangerouslySetInnerHTML={{ __html: acf.talk_resources}}
+          dangerouslySetInnerHTML={{ __html: metaInfo.talkResources}}
         />
       }
     </Layout>
@@ -72,20 +72,20 @@ const SpeakerSessionTemplate = ({ data }) => {
 export default SpeakerSessionTemplate;
 
 export const query = graphql`
-  query($id: Int!) {
-    wordpressWpSpeakerSessions(wordpress_id: { eq: $id }) {
+  query($id: String!) {
+    wpSpeakerSession(id: { eq: $id }) {
       title
       content
       excerpt
       date(formatString: "MMMM DD, YYYY")
-      acf {
-        talk_date
-        talk_end
-        talk_recording
-        talk_registration
-        talk_start
-        talk_is_recorded
-        talk_resources
+      metaInfo {
+        talkDate
+        talkEnd
+        talkRecording
+        talkRegistration
+        talkStart
+        talkIsRecorded
+        talkResources
       }
     }
   }

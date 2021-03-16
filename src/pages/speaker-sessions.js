@@ -7,9 +7,9 @@ import SEO from '../components/seo';
 
 class SpeakerSessions extends React.Component {
   render() {
-    const talks = this.props.data.allWordpressWpSpeakerSessions.edges;
-    const pastTalks = talks.filter(talk => moment(talk.node.acf.talk_date).isBefore(moment(), 'day'))
-    const upcomingTalks = talks.filter(talk => moment(talk.node.acf.talk_date).isSameOrAfter(moment(), 'days'));
+    const talks = this.props.data.allWpSpeakerSession.nodes;
+    const pastTalks = talks.filter(talk => moment(talk.metaInfo.talkDate).isBefore(moment(), 'day'))
+    const upcomingTalks = talks.filter(talk => moment(talk.metaInfo.talkDate).isSameOrAfter(moment(), 'days'));
 
     return (
       <Layout>
@@ -31,18 +31,16 @@ export default SpeakerSessions;
 
 export const query = graphql`
   query {
-    allWordpressWpSpeakerSessions {
-      edges {
-        node {
-          wordpress_id
-          type
-          title
-          slug
-          excerpt
-          acf {
-            talk_date
-          }
+    allWpSpeakerSession {
+      nodes {
+        id
+        title
+        slug
+        excerpt
+        metaInfo {
+          talkDate
         }
+        nodeType
       }
     }
   }

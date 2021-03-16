@@ -6,22 +6,23 @@ import Excerpt from '../components/Excerpt';
 import Pagination from '../components/Pagination';
 
 class BlogList extends React.Component {
+  
   render() {
-    const posts = this.props.data.allWordpressPost.edges;
+    const posts = this.props.data.allWpPost.nodes;
     const { currentPage, numPages } = this.props.pageContext;
 
     return (
       <Layout>
         <SEO title="All posts" />
-        {posts.map(({ node }) => {
+        {posts.map((post) => {
           return (
             <Excerpt
-              key={node.wordPress_id}
-              title={node.title}
-              url={`/blog/${node.slug}`}
-              date={node.date}
+              key={post.id}
+              title={post.title}
+              url={`/blog/${post.slug}`}
+              date={post.date}
             >
-              {node.excerpt}
+              {post.excerpt}
             </Excerpt>
           )
         })}
@@ -39,20 +40,17 @@ export default BlogList;
 
 export const blogListQuery = graphql`
   query blogListQuery($skip: Int!, $limit: Int!) {
-    allWordpressPost (
+    allWpPost (
       limit: $limit
       skip: $skip
     ) {
-      edges {
-        node {
+      nodes {
           title
           slug
           excerpt
-          wordpress_id
+          id
           date(formatString: "MMMM DD, YYYY")
-          type
         }
-      }
     }
   }
 `

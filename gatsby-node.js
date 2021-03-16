@@ -8,28 +8,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const BlogListTemplate = path.resolve('./src/templates/BlogList.jsx');
   const result = await graphql(`
     {
-      allWordpressPost {
-        edges {
-          node {
-            slug
-            wordpress_id
-          }
+      allWpPost {
+        nodes {
+          id
+          slug
         }
       }
-      allWordpressWpCodeSamples {
-        edges {
-          node {
-            slug
-            wordpress_id
-          }
+      allWpCodeSample {
+        nodes {
+          id
+          slug
         }
       }
-      allWordpressWpSpeakerSessions {
-        edges {
-          node {
-            slug
-            wordpress_id
-          }
+      allWpSpeakerSession {
+        nodes {
+          id
+          slug
         }
       }
     }
@@ -39,7 +33,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  const BlogPosts = result.data.allWordpressPost.edges;
+  const BlogPosts = result.data.allWpPost.nodes;
   const postsPerPage = 5;
   const numPages = Math.ceil(BlogPosts.length / postsPerPage);
 
@@ -59,32 +53,32 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   BlogPosts.forEach((post) => {
     createPage({
-      path: `/blog/${post.node.slug}`,
+      path: `/blog/${post.slug}`,
       component: SinglePostTemplate,
       context: {
-        id: post.node.wordpress_id,
+        id: post.id,
       },
     });
   });
 
-  const CodeSamples = result.data.allWordpressWpCodeSamples.edges;
+  const CodeSamples = result.data.allWpCodeSample.nodes;
   CodeSamples.forEach((sample) => {
     createPage({
-      path: `/code-samples/${sample.node.slug}`,
+      path: `/code-samples/${sample.slug}`,
       component: CodeSampleTemplate,
       context: {
-        id: sample.node.wordpress_id,
+        id: sample.id,
       }
     })
   })
 
-  const SpeakerSessions = result.data.allWordpressWpSpeakerSessions.edges;
+  const SpeakerSessions = result.data.allWpSpeakerSession.nodes;
   SpeakerSessions.forEach((session) => {
     createPage({
-      path: `/speaker-sessions/${session.node.slug}`,
+      path: `/speaker-sessions/${session.slug}`,
       component: SpeakerSessionTemplate,
       context: {
-        id: session.node.wordpress_id,
+        id: session.id,
       }
     })
   })
