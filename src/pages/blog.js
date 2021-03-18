@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 import { navigate } from 'gatsby';
 
-export default () => {
+const BlogRedirect = () => {
   useEffect(() => {
     navigate('/');
   }, []);
   return null;
 };
+
+export default BlogRedirect;
