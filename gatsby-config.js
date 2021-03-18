@@ -29,34 +29,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        url: 'http://wp.khaosophy.com/graphql',
-        baseUrl: `${process.env.BASE_URL}`,
-        protocol: `${process.env.PROTOCOL}`,
-        hostingWPCOM: false,
-        useACF: true,
-        acfOptionPageIds: [],
-        auth: {
-          htaccess_user: `${process.env.HTACCESS_USER}`,
-          htaccess_pass: `${process.env.HTACCESS_PASS}`,
-          htaccess_sendImmediately: true,
-        },
-        verboseOutput: false,
-        perPage: 100,
-        concurrentRequests: 10,
-        includedRoutes: [
-          "**/categories",
-          "**/posts",
-          "**/pages",
-          "**/media",
-          "**/tags",
-          "**/taxonomies",
-          "**/code-samples",
-          "**/speaker-sessions",
-        ],
-        excludedRoutes: [],
-        normalizer: function({ entities }) {
-          return entities
-        },
+        url: `${process.env.PROTOCOL}://${process.env.BASE_URL}/graphql`, // in 5.0, this is the only required field
       },
     },
   ],
