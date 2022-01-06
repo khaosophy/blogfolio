@@ -1,0 +1,48 @@
+---
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+const title = 'FIX ME';
+
+export async function getStaticPaths() {
+  const response = await fetch('https://wp.khaosophy.com/wp-json/wp/v2/posts');
+  const posts = await response.json();
+
+  return posts.map(post => {
+    return {
+      params: { post: post.slug },
+			props: {
+				postTitle: post.title.rendered,
+				content: post.content.rendered,
+				date: post.date,
+			},
+    }
+  });
+}
+const { postTitle, content, date } = Astro.props;
+---
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>{title}</title>
+
+	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href={Astro.resolve('../../styles/global.css')}>
+</head>
+<body>
+	<Header />
+	<main>
+		<small style="position: absolute;"><a href="/">← Back to Blog</a></small>
+		<h1 style="
+			margin-bottom: 0.4375rem;
+			font-family: 'Montserrat', sans-serif;
+		">{postTitle}</h1>
+		<small>Published {date}</small><!-- todo: format -->
+		<div style="margin-top: 20px">{content}</div>		
+	</main>
+	<Footer />
+</body>
+</html>

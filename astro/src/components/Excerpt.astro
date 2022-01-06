@@ -1,0 +1,29 @@
+---
+export interface Props {
+  id: number,
+  title: string,
+  summary: string,
+  slug: string,
+  date?: string,
+  continueText?: string,
+}
+const {
+  title,
+  summary,
+  slug,
+  date,
+  continueText = 'Continue Reading...',
+} = Astro.props;
+const url = `/blog/${slug}`;
+/* todo: format date */
+---
+<article class="excerpt" style="margin-top: 3.5rem;">
+  <header style="margin-bottom: 0.875rem;">
+    <a href={url}>
+      <h3 style="margin: 0;">{title}</h3>
+    </a>
+    {date && <small>{date}</small>}
+  </header>
+  <div>{summary}</div>
+  <a href={url}>{continueText}</a>
+</article>

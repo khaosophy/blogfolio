@@ -1,0 +1,105 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+	font-family: 'Merriweather', serif;
+	line-height: 1.75;
+}
+
+/* Copied from Gatsby Blogfolio */
+html, body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+body {
+	color: hsla(0,0%,0%,0.9)
+}
+
+main {
+	flex-grow: 1;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 50rem;
+	padding: 2.5rem 1.5rem;
+}
+
+article.excerpt {
+	max-width: 35rem;
+}
+
+figure img {
+	margin-bottom: 0;
+}
+
+figcaption {
+	color: #767676; /* lightest gray that can be used on a white background and pass readability tests */
+	font-size: 0.75rem;
+}
+
+small {
+	color: #767676; /* todo: extract to variable (see figcaption above) */
+}
+
+code {
+	background: #e0f2ff;
+	padding: 0.15em 0.25em;
+}
+
+pre code {
+	display: block;
+	background: #f3faff;
+	padding: 1rem 1.5rem;
+	border: 1px solid #e0f2ff;
+	overflow-x: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 3.5rem;
+}
+
+h1, h2, h3, h4, h5, h6, ul, ol, p, code {
+ margin-bottom: 1.75rem;
+}
+
+h1 {
+	font-size: 2.5rem;
+	line-height: 1.1;
+}
+
+h2 {
+	font-size: 1.73286rem;
+	line-height: 1.1;
+	font-weight: 900;
+	text-rendering: optimizeLegibility;
+}
+
+h3 {
+	font-size: 1.4rem;
+	line-height: 1.1;
+	font-weight: 900;
+	text-rendering: optimizeLegibility;
+	margin-bottom: 1.5rem;
+}
+
+a {
+	color: #007acc;
+	text-decoration: none;
+}
+
+/* handle styles for CodePen embeds */
+@media screen and (min-width: 1160px){
+	.wp-block-cp-codepen-gutenberg-embed-block.cp_embed_wrapper {
+			width: 150%;
+			position: relative;
+			left: -25%;
+	}
+}
+.wp-block-cp-codepen-gutenberg-embed-block.cp_embed_wrapper > iframe {
+	height: 600px;
+}

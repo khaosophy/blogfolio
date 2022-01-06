@@ -1,0 +1,32 @@
+.pagination {
+  display: flex;
+  margin-top: 4rem;
+  justify-content: flex-end;
+}
+
+.pagination__number,
+.pagination__previous,
+.pagination__next {
+  padding: 0.75em 1em;
+  /* text-decoration: none; */
+  box-shadow: none;
+  border: 1px solid #007acc;
+  border-radius: 0.25em;
+  background: white;
+  transition: background .3s 
+}
+
+.pagination__number:hover,
+.pagination__number:focus,
+.pagination__previous:hover,
+.pagination__previous:focus,
+.pagination__next:hover,
+.pagination__next:focus,
+.pagination__number--active {
+  background: #007acc;
+  color: white;
+}
+
+.pagination > *:not(:last-child) {
+  margin-right: 1rem;
+}

@@ -1,0 +1,42 @@
+---
+const date = new Date().getFullYear();
+const author = 'Casey James Perno'; // todo: get from CMS
+---
+<style>
+  .page__footer {
+    background: #007acc;
+    color: white;
+    margin-top: 3.5rem; /* to better match spacing between header and first element */
+  }
+
+  .page__footer a[href] {
+    color: white;
+  }
+
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 42rem;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .page__footer .container {
+    max-width: 50rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+</style>
+<footer class="page__footer">
+  <div class="container">
+    <span class="copyright">Copyright &copy; {date} {author}</span>
+    <span class="links">
+      <a href="https://github.com/khaosophy" target="_blank">GitHub</a>
+      &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/in/casey-perno" target="_blank">LinkedIn</a>
+      &nbsp;|&nbsp;
+      <a href="https://twitter.com/SirCaseyJames" target="_blank">Twitter</a>
+    </span>
+  </div>
+</footer>
