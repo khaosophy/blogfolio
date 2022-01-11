@@ -1,35 +1,15 @@
 ---
-// Component Imports
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Excerpt from '../components/Excerpt.astro';
-// You can import components from any supported Framework here!
+import PageMeta from '../components/PageMeta.astro';
 
-
-// Component Script:
-// You can write any JavaScript/TypeScript that you'd like here.
-// It will run during the build, but never in the browser.
-// All variables are available to use in the HTML template below.
-let title = 'My Astro Site';
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
-
-// fetch post list
 const response = await fetch('https://wp.khaosophy.com/wp-json/wp/v2/posts');
 const posts = await response.json();
 ---
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width">
-	<title>{title}</title>
-
-	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href={Astro.resolve('../styles/global.css')}>
+	<PageMeta title="All posts" />
 </head>
 <body>
 	<Header />
