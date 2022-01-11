@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "astro": "^0.22.7"
+  },
+  "dependencies": {
+    "dayjs": "^1.10.7"
   }
 }
