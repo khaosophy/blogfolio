@@ -15,15 +15,19 @@ export async function getStaticPaths() {
 				postTitle: post.title.rendered,
 				content: post.content.rendered,
 				date: post.date,
+				excerpt: post.excerpt.rendered,
 			},
     }
   });
 }
-const { postTitle, content, date } = Astro.props;
+const { postTitle, content, date, excerpt } = Astro.props;
 ---
 <html lang="en">
 <head>
-	<PageMeta title={postTitle} />
+	<PageMeta
+		title={postTitle}
+		description={excerpt}
+	/>
 </head>
 <body>
 	<Header />
