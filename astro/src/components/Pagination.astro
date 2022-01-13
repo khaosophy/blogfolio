@@ -1,0 +1,16 @@
+---
+export interface Props {
+  nextPageUrl: string,
+  prevPageUrl: string,
+}
+
+const {
+  nextPageUrl,
+  prevPageUrl,
+} = Astro.props;
+---
+
+<div class="pagination" style="margin-top: 3rem;">
+  {prevPageUrl && <a href={prevPageUrl}>Previous Page</a>}
+  {nextPageUrl && <a href={nextPageUrl}>Next Page</a>}
+</div>
