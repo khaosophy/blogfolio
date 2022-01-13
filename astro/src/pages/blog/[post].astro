@@ -1,8 +1,6 @@
 ---
 import dayjs from 'dayjs';
-import Header from '../../../components/Header.astro';
-import Footer from '../../../components/Footer.astro';
-import PageMeta from '../../../components/PageMeta.astro';
+import PostLayout from '../../layouts/PostLayout.astro';
 
 export async function getStaticPaths() {
   const response = await fetch('https://wp.khaosophy.com/wp-json/wp/v2/posts');
@@ -22,25 +20,16 @@ export async function getStaticPaths() {
 }
 const { postTitle, content, date, excerpt } = Astro.props;
 ---
-<html lang="en">
-<head>
-	<PageMeta
-		title={postTitle}
-		description={excerpt}
-	/>
-</head>
-<body>
-	<Header />
-	<main>
-		<!-- todo: back should link to the post's page -->
-		<small style="position: absolute;"><a href="/blog">← Back to Blog</a></small>
-		<h1 style="
-			margin-bottom: 0.4375rem;
-			font-family: 'Montserrat', sans-serif;
-		">{postTitle}</h1>
-		<small>Published {dayjs(date).format('MMMM D, YYYY')}</small>
-		<div style="margin-top: 20px">{content}</div>		
-	</main>
-	<Footer />
-</body>
-</html>
+<PostLayout
+	title={postTitle}
+	description={excerpt}
+>
+	<!-- todo: back should link to the post's page -->
+	<small style="position: absolute;"><a href="/blog">← Back to Blog</a></small>
+	<h1 style="
+		margin-bottom: 0.4375rem;
+		font-family: 'Montserrat', sans-serif;
+	">{postTitle}</h1>
+	<small>Published {dayjs(date).format('MMMM D, YYYY')}</small>
+	<div style="margin-top: 20px">{content}</div>
+</PostLayout
