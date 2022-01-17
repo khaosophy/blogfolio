@@ -3,8 +3,10 @@ import Excerpt from '../components/Excerpt.astro';
 import BlogLayout from '../layouts/BlogLayout.astro';
 import Pagination from '../components/Pagination.astro';
 
-const response = await fetch('https://wp.khaosophy.com/wp-json/wp/v2/posts?per_page=5');
+const response = await fetch('https://wp.khaosophy.com/wp-json/wp/v2/posts?per_page=100');
 const posts = await response.json();
+const totalPages = posts.length / 5;
+posts.splice(5);
 ---
 <BlogLayout
 	title="All posts"
@@ -22,5 +24,7 @@ const posts = await response.json();
 	<!-- on the home page, the next page will always be blog page 2 -->
 	<Pagination
 		nextPageUrl="/blog/page/2"
+		currentPage={1}
+		totalPages={totalPages}
 	/>
 </BlogLayout>
