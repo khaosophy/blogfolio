@@ -11,10 +11,8 @@ export async function getStaticPaths({ paginate }) {
 }
 const { page } = Astro.props;
 ---
-
-<!-- todo: All posts title to page number -->
 <BlogLayout
-	title="All posts"
+	title={`Blog Page ${page.currentPage}`}
 	description="Casey is a front end developer with a background in SEO and business management."
 >
 	{page.data.map(post => (
