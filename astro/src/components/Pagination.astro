@@ -1,41 +1,83 @@
 ---
+import classNames from 'classnames';
+
 export interface Props {
   nextPageUrl: string,
   prevPageUrl?: string,
+  currentPage?: number,
+  totalPages?: number, 
 }
 
 const {
   nextPageUrl,
   prevPageUrl,
+  currentPage,
+  totalPages,
 } = Astro.props;
+
+const pages = [...Array(totalPages).keys()];
 ---
-<!-- todo: active page -->
-<!-- todo: list of page numbers -->
 <style>
   .pagination {
     display: flex;
+    margin-top: 4rem;
+    justify-content: flex-end;
   }
-  .pagination__prev {}
+
+  .pagination__number,
+  .pagination__previous,
   .pagination__next {
-    margin-left: auto;
+    padding: 0.75em 1em;
+    border: 1px solid #007acc;
+    border-radius: 0.25em;
+    transition: background .3s 
+  }
+
+  .pagination__number:hover,
+  .pagination__number:focus,
+  .pagination__previous:hover,
+  .pagination__previous:focus,
+  .pagination__next:hover,
+  .pagination__next:focus,
+  .pagination__number--current {
+    background: #007acc;
+    color: white;
+  }
+
+  .pagination > *:not(:last-child) {
+    margin-right: 1rem;
   }
 </style>
 
 <div class="pagination" style="margin-top: 3rem;">
   {prevPageUrl && (
     <a 
-      class="pagination__prev"
+      class="pagination__previous"
       href={prevPageUrl}
     >
-      Previous Page
+      Previous
     </a>
   )}
+
+  {pages.map(page => {
+    const pageNum = page + 1;
+    return (
+      <a
+        class={classNames('pagination__number', { 'pagination__number--current': pageNum === currentPage })}
+        href={`/blog/page/${pageNum}`}
+      >
+        {pageNum}
+      </a>
+    )
+  }
+  )}
+
   {nextPageUrl && (
     <a
       class="pagination__next"
       href={nextPageUrl}
     >
-      Next Page
+      Next
     </a>
   )}
 </div>
