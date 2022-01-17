@@ -11,8 +11,31 @@ const {
 ---
 <!-- todo: active page -->
 <!-- todo: list of page numbers -->
+<style>
+  .pagination {
+    display: flex;
+  }
+  .pagination__prev {}
+  .pagination__next {
+    margin-left: auto;
+  }
+</style>
 
 <div class="pagination" style="margin-top: 3rem;">
-  {prevPageUrl && <a href={prevPageUrl}>Previous Page</a>}
-  {nextPageUrl && <a href={nextPageUrl}>Next Page</a>}
+  {prevPageUrl && (
+    <a 
+      class="pagination__prev"
+      href={prevPageUrl}
+    >
+      Previous Page
+    </a>
+  )}
+  {nextPageUrl && (
+    <a
+      class="pagination__next"
+      href={nextPageUrl}
+    >
+      Next Page
+    </a>
+  )}
 </div>
