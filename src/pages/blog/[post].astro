@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import PostLayout from '../../layouts/PostLayout.astro';
 
 export async function getStaticPaths() {
-  const response = await fetch('https://wp.khaosophy.com/wp-json/wp/v2/posts');
+  const response = await fetch('https://wp.khaosophy.com/wp-json/wp/v2/posts?per_page=100');
   const posts = await response.json();
 
   return posts.map(post => {
