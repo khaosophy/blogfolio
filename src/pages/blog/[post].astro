@@ -1,4 +1,5 @@
 ---
+import { parse } from 'node-html-parser';
 import dayjs from 'dayjs';
 import PostLayout from '../../layouts/PostLayout.astro';
 
@@ -11,7 +12,7 @@ export async function getStaticPaths() {
       params: { post: post.slug },
 			props: {
 				postTitle: post.title.rendered,
-				content: post.content.rendered,
+				content: parse(post.content.rendered),
 				date: post.date,
 				excerpt: post.excerpt.rendered,
 			},
