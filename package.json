@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "classnames": "^2.3.1",
-    "dayjs": "^1.10.7"
+    "dayjs": "^1.10.7",
+    "node-html-parser": "^5.3.3"
   },
   "devDependencies": {
     "@astrojs/react": "^0.1.3",
