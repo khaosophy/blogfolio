@@ -22,7 +22,8 @@ const posts = await Astro.glob('../content/*.md');
 		* For convenience, we are also removing pagination for now. 
 	  */}
 	{posts.map(async (post) => {
-		const { title, slug, date, excerpt } = post.frontmatter;
+		/* TODO: add support to overwrite summary/excerpt (here and on the post itself) */
+		const { title, slug, date } = post.frontmatter;
 		const summary = parse(await post.compiledContent()).querySelector('p:first-of-type');
 		return (
 			<Excerpt
