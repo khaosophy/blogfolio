@@ -1,18 +1,41 @@
 ---
+import { parse } from 'node-html-parser';
 import Excerpt from '../components/Excerpt.astro';
 import BlogLayout from '../layouts/BlogLayout.astro';
 import Pagination from '../components/Pagination.astro';
 
 const response = await fetch('https://wp.khaosophy.com/wp-json/wp/v2/posts?per_page=100');
-const posts = await response.json();
-const totalPages = posts.length / 5;
-posts.splice(5);
+const WpPosts = await response.json();
+// const totalPages = WpPosts.length / 5;
+// WpPosts.splice(5);
+
+const posts = await Astro.glob('../content/*.md');
+
 ---
 <BlogLayout
 	title="All posts"
 	description="Casey is a front end developer with a background in SEO and business management."
 >
-	{posts.map(post => (
+	{/**
+	  * Until we convert all content from WordPress to Markdown,
+		* we are essentially rendering both data sets.
+		* For convenience, we are also removing pagination for now. 
+	  */}
+	{posts.map(async (post) => {
+		const { title, slug, date, excerpt } = post.frontmatter;
+		const summary = parse(await post.compiledContent()).querySelector('p:first-of-type');
+		return (
+			<Excerpt
+				id={slug}
+				date={date}
+				slug={slug}
+				title={title}
+				summary={summary}
+			/>
+		);
+	})}
+
+	{WpPosts.map(post => (
 		<Excerpt
 			id={post.id}
 			date={post.date}
@@ -22,9 +45,9 @@ posts.splice(5);
 		/>
 	))}
 	<!-- on the home page, the next page will always be blog page 2 -->
-	<Pagination
+	<!-- <Pagination
 		nextPageUrl="/blog/page/2"
 		currentPage={1}
 		totalPages={totalPages}
-	/>
+	/> -->
 </BlogLayout>
