@@ -9,7 +9,7 @@ const WpPosts = await response.json();
 // const totalPages = WpPosts.length / 5;
 // WpPosts.splice(5);
 
-const posts = await Astro.glob('../content/*.md');
+const posts = await Astro.glob('../content/blog/*.md');
 
 ---
 <BlogLayout
