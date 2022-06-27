@@ -21,15 +21,17 @@ Thankfully neither plugin does this. As of this writing, both Advanced Custom Fi
 
 So how do we prevent unintentional deactivation or deletion, especially of critical plugins? We can move these plugins into the mu-plugin directory. The files in this directory are always on and cannot be deactivated or deleted except by someone with server access.
 
-![](/images/muplugins-onsite-cpt.png)
-
-This blog has two must-use plugins currently installed, responsible for its custom post types.
+<figure>
+  <img src="/images/muplugins-onsite-cpt.png" alt="">
+  <figcaption>This blog has two must-use plugins currently installed, responsible for its custom post types.</figcaption>
+</figure>
 
 Instead of relying on the aforementioned Custom Post Type UI, I tend to create my own custom post types in the code. I've seen people often do this in the functions.php file of the active theme (hopefully a child theme!), but this maps the post types to that specific theme. Wouldn't it be better to decouple them, so that you retain the post types if you change themes?
 
-![](/images/muplugin-directory.png)
-
-The mu-plugin directory should be in the same folder as plugins and themes.
+<figure>
+  <img src="/images/muplugin-directory.png" alt="">
+  <figcaption>The mu-plugin directory should be in the same folder as plugins and themes.</figcaption>
+</figure>
 
 It's very easy to create a mu-plugin too. On the server, create a new folder in the same directory as the plugin folder called `mu-plugins` (if you don't already have one). Then create a new php file for the functionality you want. On this blog, I have two mu-plugins that handle my two custom post types. Because mu-plugins cannot be deactivated from the WordPress admin, and because I hardcoded the post types, I'm not worried about resiliency.
 

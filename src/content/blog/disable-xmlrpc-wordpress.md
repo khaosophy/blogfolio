@@ -21,9 +21,10 @@ Now that we have a better idea of what XML-RPC means, we can see the threat it p
 
 Thankfully WordPress has a number of security plugins that can do this for us with just the click of a few buttons. The plugin I generally use is [All In One WP Security & Firewall](https://wordpress.org/plugins/all-in-one-wp-security-and-firewall/), but there are a dozen options out there. For the sake of this walk-through, I'm going to use the aforementioned plugin, but some other options include [Wordfence](https://wordpress.org/plugins/wordfence-login-security/) and [Jetpack](https://wordpress.org/plugins/jetpack/).
 
-![](/images/wpSecurity-xmlrpc-1024x398.png)
-
-The XML-RPC options inside All in One WP Security & Firewall 
+<figure>
+  <img src="/images/wpSecurity-xmlrpc-1024x398.png" alt="">
+  <figcaption>The XML-RPC options inside All in One WP Security & Firewall</figcaption>
+</figure> 
 
 Once you install the plugin, you'll see WP Security appear in the admin's sidebar navigation. Navigate to WP Security -> Firewall. Here you'll see a section called WordPress XML-RPC & Pingback Vulnerability Protection.
 
