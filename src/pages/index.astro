@@ -10,6 +10,7 @@ const WpPosts = await response.json();
 // WpPosts.splice(5);
 
 const posts = await Astro.glob('../content/blog/*.md');
+posts.sort((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date));
 
 ---
 <BlogLayout
@@ -22,16 +23,20 @@ const posts = await Astro.glob('../content/blog/*.md');
 		* For convenience, we are also removing pagination for now. 
 	  */}
 	{posts.map(async (post) => {
-		/* TODO: add support to overwrite summary/excerpt (here and on the post itself) */
 		const { title, slug, date } = post.frontmatter;
-		const summary = parse(await post.compiledContent()).querySelector('p:first-of-type');
+		let { excerpt } = post.frontmatter;
+		if (excerpt) {
+			excerpt = parse(`<p>${excerpt}</p>`);
+		} else {
+			excerpt = parse(await post.compiledContent()).querySelector('p:first-of-type');
+		}
 		return (
 			<Excerpt
 				id={slug}
 				date={date}
 				slug={slug}
 				title={title}
-				summary={summary}
+				summary={excerpt}
 			/>
 		);
 	})}

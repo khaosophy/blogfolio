@@ -33,8 +33,17 @@ article.excerpt {
 	max-width: 35rem;
 }
 
+figure {
+	margin-bottom: 1rem;
+}
+
 figure img {
 	margin-bottom: 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
 }
 
 figcaption {
