@@ -1,7 +1,7 @@
 ---
 title: Astro in Review
 slug: astro-review
-date: 01/06/2022
+date: 2022-01-07
 ---
 
 # Astro in Review

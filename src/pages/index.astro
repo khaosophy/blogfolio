@@ -10,6 +10,7 @@ const WpPosts = await response.json();
 // WpPosts.splice(5);
 
 const posts = await Astro.glob('../content/blog/*.md');
+posts.sort((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date));
 
 ---
 <BlogLayout

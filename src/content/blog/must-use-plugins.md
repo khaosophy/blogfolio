@@ -1,7 +1,7 @@
 ---
-title: "Increase Resilience with Must-Use Plugins"
-slug: "must-use-plugins"
-date: "2020-12-15"
+title: Increase Resilience with Must-Use Plugins
+slug: must-use-plugins
+date: 2020-12-16
 excerpt: "Plugins and themes are the life-blood of WordPress. There are thousands of quality themes and plugins available in the WordPress repository for free, and even more out there on various marketplaces for extraordinarily low prices. Millions of people have made great websites using these tools and little else, and it is undoubtedly the reason for […]"
 ---
 
