@@ -4,40 +4,16 @@ import dayjs from 'dayjs';
 import PostLayout from '../../layouts/PostLayout.astro';
 
 export async function getStaticPaths() {
-  const response = await fetch('https://wp.khaosophy.com/wp-json/wp/v2/posts?per_page=100');
-  const WpPosts = await response.json();
-	const MdPosts = await Astro.glob('../../content/blog/*.md');
-
-	const allPosts = [
-		MdPosts.map(post => {
-			return {
-					params: { post: post.frontmatter.slug },
-					props: { post },
-				}
-		}),
-
-		WpPosts.map(post => {
-			return {
-				params: { post: post.slug },
-				props: {
-					post: {
-						content: parse(post.content.rendered),
-						frontmatter: {
-							title: post.title.rendered,
-							date: post.date,
-							excerpt: post.excerpt.rendered,
-						}
-					}
-				},
+	const posts = await Astro.glob('../../content/blog/**/*.md');
+	return posts.map(post => {
+		return {
+				params: { post: post.frontmatter.slug },
+				props: { post },
 			}
-		})
-	];
-
-  return allPosts;
+	});
 }
-const { Content, content, frontmatter: meta } = Astro.props.post;
+const { Content, frontmatter: meta } = Astro.props.post;
 const { title, date } = meta;
-// if excerpt is undefined (e.g. not from WordPress), parse and return first paragraph of content
 let { excerpt } = meta;
 if(!excerpt) {
 	excerpt = parse(await Astro.props.post.compiledContent()).querySelector('p:first-of-type');
@@ -55,7 +31,6 @@ if(!excerpt) {
 	">{title}</h1>
 	<small>Published {dayjs(date).format('MMMM D, YYYY')}</small>
 	<div style="margin-top: 20px">
-		<!-- if lowercase content is undefined (which comes from WP), render Astro's Markdown Content -->
-		{content ? content : <Content />}
+		<Content />
 	</div>
 </PostLayout>

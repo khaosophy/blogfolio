@@ -4,24 +4,17 @@ import Excerpt from '../components/Excerpt.astro';
 import BlogLayout from '../layouts/BlogLayout.astro';
 import Pagination from '../components/Pagination.astro';
 
-const response = await fetch('https://wp.khaosophy.com/wp-json/wp/v2/posts?per_page=100');
-const WpPosts = await response.json();
-// const totalPages = WpPosts.length / 5;
-// WpPosts.splice(5);
-
-const posts = await Astro.glob('../content/blog/*.md');
+const posts = await Astro.glob('../content/blog/**/*.md');
 posts.sort((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date));
+
+const totalPages = Math.ceil(posts.length / 5);
+posts.splice(5);
 
 ---
 <BlogLayout
 	title="All posts"
 	description="Casey is a front end developer with a background in SEO and business management."
 >
-	{/**
-	  * Until we convert all content from WordPress to Markdown,
-		* we are essentially rendering both data sets.
-		* For convenience, we are also removing pagination for now. 
-	  */}
 	{posts.map(async (post) => {
 		const { title, slug, date } = post.frontmatter;
 		let { excerpt } = post.frontmatter;
@@ -40,20 +33,10 @@ posts.sort((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.d
 			/>
 		);
 	})}
-
-	{WpPosts.map(post => (
-		<Excerpt
-			id={post.id}
-			date={post.date}
-			slug={post.slug}
-			title={post.title.rendered}
-			summary={post.excerpt.rendered}
-		/>
-	))}
 	<!-- on the home page, the next page will always be blog page 2 -->
-	<!-- <Pagination
+	<Pagination
 		nextPageUrl="/blog/page/2"
 		currentPage={1}
 		totalPages={totalPages}
-	/> -->
+	/>
 </BlogLayout>
