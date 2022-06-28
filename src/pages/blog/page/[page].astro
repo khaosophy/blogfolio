@@ -1,11 +1,11 @@
 ---
+import { parse } from 'node-html-parser';
 import BlogLayout from '../../../layouts/BlogLayout.astro';
 import Excerpt from '../../../components/Excerpt.astro';
 import Pagination from '../../../components/Pagination.astro';
 
 export async function getStaticPaths({ paginate }) {
-  const response = await fetch('https://wp.khaosophy.com/wp-json/wp/v2/posts?per_page=100');
-  const posts = await response.json();
+  const posts = await Astro.glob('../../../content/blog/**/*.md');
 
   return paginate(posts, { pageSize: 5 });
 }
@@ -15,15 +15,23 @@ const { page } = Astro.props;
 	title={`Blog Page ${page.currentPage}`}
 	description="Casey is a front end developer with a background in SEO and business management."
 >
-	{page.data.map(post => (
-		<Excerpt
-			id={post.id}
-			date={post.date}
-			slug={post.slug}
-			title={post.title.rendered}
-			summary={post.excerpt.rendered}
-		/>
-	))}
+	{page.data.map(async (post) => {
+		let { excerpt } = post.frontmatter;
+		if(excerpt) {
+			excerpt = parse(`<p>${excerpt}</p>`);
+		} else {
+			excerpt = parse(await post.compiledContent()).querySelector('p:first-of-type');
+		}
+		return (
+			<Excerpt
+				id={post.frontmatter.slug}
+				date={post.frontmatter.date}
+				slug={post.frontmatter.slug}
+				title={post.frontmatter.title}
+				summary={excerpt}
+			/>
+		)
+	})}
 	<Pagination
 		nextPageUrl={page.url.next}
 		prevPageUrl={page.url.prev}
