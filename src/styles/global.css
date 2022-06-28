@@ -34,7 +34,7 @@ article.excerpt {
 }
 
 figure {
-	margin-bottom: 1rem;
+	margin-bottom: 1.75rem;
 }
 
 figure img {
@@ -99,6 +99,17 @@ h3 {
 a {
 	color: #007acc;
 	text-decoration: none;
+}
+
+blockquote {
+	border-left: 3px solid #007acc;
+	background: #f5fbff;
+	padding: 1rem;
+	margin-bottom: 1.75rem;
+}
+
+blockquote :last-child {
+	margin-bottom: 0;
 }
 
 /* handle styles for CodePen embeds */
