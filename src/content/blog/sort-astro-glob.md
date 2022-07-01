@@ -5,21 +5,23 @@ date: "2022-07-01"
 excerpt: "Astro is a framework that let's you bring your own framework, but when this blog was rebuilt to use Markdown, I ran into an expected hiccup: the content was not being returned in date order like it was from WordPress. How can we sort the blog posts by date order?"
 ---
 
-Astro is a framework that lets you bring your *own* framework and ship your site as static (or semi-static) html. It's a great product that's almost out of beta. You can [read more information in my Astro review](/blog/astro-review). Today we're going to look at a brief hiccup I had when trying to pull in Markdown content for a blog, especially when moving off WordPress: namely, sorting. WordPress returns all their posts already sorted by date, so the latest post is at the front of the returned array. Astro doesn't do that out of the box (how can it?). But once I realized why my posts were out of order, it was easy enough to fix it by sorting the array by date. Let's take a look.
+Astro is a framework that lets you bring your *own* framework and ship your site as static html (or semi-static). It's a great product that's almost out of beta, and it's what this blog is currently written in. You can [read more about it in my Astro review](/blog/astro-review). Today we're going to look at a brief hiccup I had while migrating content from WordPress to Markdown: namely, sorting posts. WordPress returns all their posts already sorted by date, so the latest post is at the front of the returned array. Astro doesn't do that out of the box (how can it?). But once I realized why my posts were out of order, it was easy enough to fix by sorting the array. Let's take a look.
 
 ## Getting the Content
 
-First, let's take a look at how I'm getting the Markdown content:
+First, let's take a look at how we get the Markdown content:
 
 ```
 const posts = await Astro.glob('../content/blog/**/*.md');
 ```
 
-In my `src` folder (next to components and pages), I have a content folder that stores all my site's content, including blog posts, code samples, etc. We can get that content via `Astro.glob()`. The glob will return an array based on the markdown files in the specified location. On my machine at least, this returned them in alphabetical order based on the name of the markdown file. But in a blog, you typically want to display them in order of most recently written. 
+In my `src` folder (next to components and pages), I have a content folder that stores all my site's content, including blog posts, code samples, etc. We can get that content via `Astro.glob()`. The glob will return an array based on the markdown files in the specified location. On my machine at least, this returned them in alphabetical order based on the name of the file. But in a blog, you typically want to display them in order of most recently written. 
+
+You can [read more about the Astro.glob() function in the Astro Docs](https://docs.astro.build/en/guides/markdown-content/#importing-markdown).
 
 ## Sorting the Content
 
-Once we have the array returned from `Astro.glob()`, it's easy enough to sort by date *assuming* you have a date property specified in the markdown's frontmatter. Here is a typical frontmatter for one of my blog posts:
+Once we have the array returned from `Astro.glob()`, it's easy enough to sort by date *assuming* you have a date property specified in the markdown's frontmatter. Here is the typical frontmatter data for one of my blog posts:
 
 ```
 title: Sorting an Astro Glob
@@ -48,7 +50,7 @@ const array = [80, 9, 22, 3];
 array.sort();
 ```
 
-You would expect this to return `[3, 9, 22, 80]` or `[80, 22, 9, 3]`, but in JavaScript it returns `[22, 3, 80, 9]`. This is because `.sort()` without a `compareFunction` stringifies the values and then sorts them as a string. In order to sort this number array successfully, you need to do the following:
+You would expect this to return `[3, 9, 22, 80]` or `[80, 22, 9, 3]`, but in JavaScript it returns `[22, 3, 80, 9]`. This is because calling `.sort()` without a `compareFunction` stringifies the values and then sorts each of them as a string. In order to sort this array of numbers successfully, you need to tell JavaScript what to do by specifying a `compareFunction`:
 
 ```
 const array = [80, 9, 22, 3];
@@ -57,8 +59,8 @@ array.sort((a, b) => a - b);
 
 This correctly returns `[3, 9, 22, 80]`. If you wanted a descending sort to get `[80, 22, 9, 3]`, you'd need to flip `a - b` to `b - a`. You can [read more about sorting on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#description).
 
-However, we're not working with simple numeric arrays, we're working with an array of objects. So instead of just doing `a - b`, we need to pick the value we want to sort: `a.date - b.date`, for example. To complicate things further, we're storing the date as a string, so we need to get a numeric representation of that date. Hence, `Date.parse(a.date)`, which transforms the date like "2022-07-01" to the number of milliseconds since January 1, 1970. You can [read more about Date.parse() on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse).
+However, we're not working with simple numeric arrays, we're working with an array of objects. So instead of just doing `a - b`, we need to pick the value we want to sort: `a.date - b.date`, for example. To complicate things further, we're storing the date as a string, so we need to get a numeric representation of that date. Hence, `Date.parse(a.date)`, which transforms the date like `"2022-07-01"` to the number of milliseconds since January 1, 1970. You can [read more about Date.parse() on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse).
 
 ## Conclusion
 
-This is a tiny thing that really didn't cause me any headaches in the long run, but it's something I didn't think about when migrating from WordPress to Markdown. It's also something I couldn't find any information about via the Internet, and figured it was worth writing up to help anyone who comes after me. It makes sense that Astro is not auto-sorting via `Astro.glob()`, and since it returns an array, it's easy enough to sort ourselves. The big downside is how much you have to drill to get to it (`post.frontmatter.date`). If `glob` could come with its own sort parameter, that might be a nice improvement. Otherwise, I hope this review of array sorting was helpful!
+There's nothing too complicated here, but it was a very minor speed bump in my conversion from WordPress to Markdown. I never thought about ordering in WordPress because it was already done out-of-the-box. It's also something I couldn't find on the Internet, and figured it was worth writing up to help anyone who comes after me. It makes sense that Astro is not auto-sorting the results of `Astro.glob()`. After all, that would require a lot of assumptions. Since the function returns an easy-to-work-with array, we can quickly sort it ourselves. The only thing I might change is how much you have to drill to get to it (e.g. `post.frontmatter.date`). If `glob` could come with its own sort parameter, that might be a nice improvement.
