@@ -1,8 +1,8 @@
 ---
 import { parse } from 'node-html-parser';
-import BlogLayout from '../../../layouts/BlogLayout.astro';
-import Excerpt from '../../../components/Excerpt.astro';
-import Pagination from '../../../components/Pagination.astro';
+import BlogLayout from '@layouts/BlogLayout.astro';
+import Excerpt from '@components/Excerpt.astro';
+import Pagination from '@components/Pagination.astro';
 
 export async function getStaticPaths({ paginate }) {
   const posts = await Astro.glob('../../../content/blog/**/*.md');
