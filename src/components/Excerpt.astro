@@ -3,13 +3,13 @@ import { parse } from 'node-html-parser';
 import dayjs from 'dayjs';
 
 export interface Props {
-  id: number,
   title: string,
   summary: string,
   slug: string,
   date?: string,
   continueText?: string,
 }
+
 const {
   title,
   slug,
@@ -19,12 +19,15 @@ const {
 const summary = parse(Astro.props.summary);
 const url = `/blog/${slug}`;
 ---
+
 <article class="excerpt" style="margin-top: 3.5rem;">
   <header style="margin-bottom: 0.875rem;">
     <a href={url}>
       <h3 style="margin: 0;">{title}</h3>
     </a>
-    {date && <small>{dayjs(date).format('MMMM D, YYYY')}</small>}
+    {(date) && (
+      <small>{dayjs(date).format('MMMM D, YYYY')}</small>
+    )}
   </header>
   <div>{summary}</div>
   <a href={url}>{continueText}</a>
