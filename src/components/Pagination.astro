@@ -1,5 +1,5 @@
 ---
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 
 export interface Props {
   nextPageUrl: string,
@@ -63,7 +63,7 @@ const pages = [...Array(totalPages).keys()];
     const pageNum = page + 1;
     return (
       <a
-        class={classNames('pagination__number', { 'pagination__number--current': pageNum === currentPage })}
+        class={clsx('pagination__number', { 'pagination__number--current': pageNum === currentPage })}
         href={`/blog/page/${pageNum}`}
       >
         {pageNum}
