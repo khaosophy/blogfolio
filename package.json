@@ -11,7 +11,7 @@
   "dependencies": {
     "clsx": "^2.0.0",
     "dayjs": "^1.11.9",
-    "node-html-parser": "^5.3.3"
+    "node-html-parser": "^5.4.2"
   },
   "devDependencies": {
     "@astrojs/react": "^0.1.3",
