@@ -96,6 +96,10 @@ h3 {
 	margin-bottom: 1.5rem;
 }
 
+ul, ol {
+	margin-left: 1.5rem;
+}
+
 a {
 	color: #007acc;
 	text-decoration: none;
