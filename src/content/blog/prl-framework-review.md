@@ -2,6 +2,7 @@
 title: Reviewing Frontend Frameworks for use at Party Rental Ltd.
 slug: prl-framework-review
 date: 2023-07-31
+excerpt: "Party Rental Ltd. is in the process of rearchitecting the website. As part of that process, we are reviewing several frontend frameworks to see which one best fits our needs. Which frameworks are worth investigating, and what aspects make them stand out?"
 ---
 
 I was brought back to <a href="https://www.partyrentalltd.com" target="_blank">Party Rental Ltd.</a> as a Frontend Architect to oversee a rearchitecting of the website. When we built the project the first time, it was a monolithic application with Java, Thymeleaf, jQuery, and React all strung together often in ugly and confusing ways. In order to get it out the door, we borrowed heavily against our future selves, and it was time to pay the piper. We needed to pay down that technical debt. 
