@@ -17,6 +17,7 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
-    }
+    },
+    "allowSyntheticDefaultImports": true,
   }
 }
