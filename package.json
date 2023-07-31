@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "clsx": "^2.0.0",
-    "dayjs": "^1.10.7",
+    "dayjs": "^1.11.9",
     "node-html-parser": "^5.3.3"
   },
   "devDependencies": {
