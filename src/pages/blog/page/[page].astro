@@ -6,6 +6,7 @@ import Pagination from '@components/Pagination.astro';
 
 export async function getStaticPaths({ paginate }) {
   const posts = await Astro.glob('../../../content/blog/**/*.md');
+	posts.sort((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date));
 
   return paginate(posts, { pageSize: 5 });
 }
