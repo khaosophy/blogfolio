@@ -4,7 +4,8 @@ import BlogLayout from '@layouts/BlogLayout.astro';
 import Excerpt from '@components/Excerpt.astro';
 import Pagination from '@components/Pagination.astro';
 
-const posts = await Astro.glob('../content/blog/**/*.md');
+const content = await Astro.glob('../content/blog/**/*.md');
+const posts = content.filter(post => !post.frontmatter.draft);
 posts.sort((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date));
 
 const totalPages = Math.ceil(posts.length / 5);
