@@ -305,22 +305,22 @@ declare module 'astro:content' {
 } & { render(): Render[".md"] };
 };
 "code-samples": {
-"google-maps-directions-api/index.md": {
-	id: "google-maps-directions-api/index.md";
+"google-maps-directions-api.md": {
+	id: "google-maps-directions-api.md";
   slug: "google-maps-directions-api";
   body: string;
   collection: "code-samples";
   data: any
 } & { render(): Render[".md"] };
-"interactive-calculator/index.md": {
-	id: "interactive-calculator/index.md";
+"interactive-calculator.md": {
+	id: "interactive-calculator.md";
   slug: "interactive-calculator";
   body: string;
   collection: "code-samples";
   data: any
 } & { render(): Render[".md"] };
-"react-quantity-stepping/index.md": {
-	id: "react-quantity-stepping/index.md";
+"react-quantity-stepping.md": {
+	id: "react-quantity-stepping.md";
   slug: "react-quantity-stepping";
   body: string;
   collection: "code-samples";
