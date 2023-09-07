@@ -1,15 +1,17 @@
 ---
 import { parse } from 'node-html-parser';
+import MarkdownIt from 'markdown-it';
+import { getCollection } from 'astro:content';
 import BlogLayout from '@layouts/BlogLayout.astro';
 import Excerpt from '@components/Excerpt.astro';
 import Pagination from '@components/Pagination.astro';
+const md = new MarkdownIt();
 
 export async function getStaticPaths({ paginate }) {
-  const content = await Astro.glob('../../../content/blog/**/*.md');
-	const publishedPosts = content.filter((post) => !post.frontmatter.draft);
-	publishedPosts.sort((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date));
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+	posts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
 
-  return paginate(publishedPosts, { pageSize: 5 });
+  return paginate(posts, { pageSize: 5 });
 }
 const { page } = Astro.props;
 ---
@@ -18,17 +20,17 @@ const { page } = Astro.props;
 	description="Casey is a front end developer with a background in SEO and business management."
 >
 	{page.data.map(async (post) => {
-		let { excerpt } = post.frontmatter;
+		let { excerpt } = post.data;
 		if(excerpt) {
 			excerpt = parse(`<p>${excerpt}</p>`);
 		} else {
-			excerpt = parse(await post.compiledContent()).querySelector('p:first-of-type');
+			excerpt = parse(md.render(post.body)).querySelector('p:first-of-type');
 		}
 		return (
 			<Excerpt
-				date={post.frontmatter.date}
-				slug={post.frontmatter.slug}
-				title={post.frontmatter.title}
+				date={post.data.date}
+				slug={post.data.slug}
+				title={post.data.title}
 				summary={excerpt}
 			/>
 		)
