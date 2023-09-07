@@ -1,23 +1,25 @@
 ---
 import { parse } from 'node-html-parser';
+import MarkdownIt from 'markdown-it';
 import dayjs from 'dayjs';
+import { getCollection } from 'astro:content';
 import PostLayout from '@layouts/PostLayout.astro';
+const md = new MarkdownIt();
 
 export async function getStaticPaths() {
-	const posts = await Astro.glob('../../content/blog/**/*.md');
+	const posts = await getCollection('blog');
 	return posts.map(post => {
 		return {
-				params: { post: post.frontmatter.slug },
+				params: { post: post.slug },
 				props: { post },
 			}
 	});
 }
-const { Content, frontmatter: meta } = Astro.props.post;
-const { title, date } = meta;
-let { excerpt } = meta;
-if(!excerpt) {
-	excerpt = parse(await Astro.props.post.compiledContent()).querySelector('p:first-of-type');
-}
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const { title, date } = post.data;
+const excerpt = post.data.excerpt || parse(md.render(post.body)).querySelector('p:first-of-type').innerHTML;
 ---
 <PostLayout
 	title={title}
