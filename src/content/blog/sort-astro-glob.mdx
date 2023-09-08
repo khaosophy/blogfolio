@@ -9,7 +9,7 @@ import InfoBlock from "@components/InfoBlock.astro"
 <InfoBlock>
   This blog post was written for Astro 1.0. 
   
-  As of Astro 2.0, it may be preferable to get your content via `getCollections()`. You can [read more about getCollections() in the Astro Docs](https://docs.astro.build/en/reference/api-reference/#getcollection). The info below is still relevant for sorting the returned data.
+  As of Astro 2.0, it may be preferable to get your content via `getCollections()`. You can <a href="https://docs.astro.build/en/reference/api-reference/#getcollection" target="_blank">read more about getCollections() in the Astro Docs</a>. The info below is still relevant for sorting the returned data.
 </InfoBlock>
 
 Astro is a framework that lets you bring your *own* framework and ship your site as static html (or semi-static). It's a great product that's almost out of beta, and it's what this blog is currently written in. You can [read more about it in my Astro review](/blog/astro-review). Today we're going to look at a brief hiccup I had while migrating content from WordPress to Markdown: namely, sorting posts. WordPress returns all their posts already sorted by date, so the latest post is at the front of the returned array. Astro doesn't do that out of the box (how can it?). But once I realized why my posts were out of order, it was easy enough to fix by sorting the array. Let's take a look.
