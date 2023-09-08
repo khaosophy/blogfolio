@@ -1,0 +1,28 @@
+---
+import clsx from 'clsx';
+
+export interface Props {
+  className?: string;
+}
+---
+<style>
+  .info-block {
+    padding: 1rem;
+    border-left: 4px solid #0099ff;
+    background-color: #e0f2ff;
+    margin-bottom: 1.75rem; /* match p margin */
+  }
+  .info-block > div {
+    /* compensate for the bottom margin on p that I can't seem to target */
+    margin-bottom: -1.75rem;
+  }
+</style>
+
+<div class={clsx(
+  'info-block',
+  Astro.props.className
+)}>
+  <div>
+    <slot />
+  </div>
+</div>

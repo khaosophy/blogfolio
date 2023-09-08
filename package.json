@@ -9,6 +9,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/mdx": "^1.0.3",
     "clsx": "^2.0.0",
     "dayjs": "^1.11.9",
     "markdown-it": "^13.0.1",
@@ -16,7 +17,7 @@
   },
   "devDependencies": {
     "@astrojs/react": "^3.0.1",
-    "@astrojs/sitemap": "^0.2.6",
+    "@astrojs/sitemap": "^3.0.0",
     "astro": "^3.0.9"
   }
 }

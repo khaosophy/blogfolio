@@ -1,5 +1,15 @@
 declare module 'astro:content' {
 	interface Render {
+		'.mdx': Promise<{
+			Content: import('astro').MarkdownInstance<{}>['Content'];
+			headings: import('astro').MarkdownHeading[];
+			remarkPluginFrontmatter: Record<string, any>;
+		}>;
+	}
+}
+
+declare module 'astro:content' {
+	interface Render {
 		'.md': Promise<{
 			Content: import('astro').MarkdownInstance<{}>['Content'];
 			headings: import('astro').MarkdownHeading[];
@@ -260,13 +270,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: any
 } & { render(): Render[".md"] };
-"sort-astro-glob.md": {
-	id: "sort-astro-glob.md";
+"sort-astro-glob.mdx": {
+	id: "sort-astro-glob.mdx";
   slug: "sort-astro-glob";
   body: string;
   collection: "blog";
   data: any
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "three-things-every-website-needs.md": {
 	id: "three-things-every-website-needs.md";
   slug: "three-things-every-website-needs";
