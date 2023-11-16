@@ -116,6 +116,18 @@ blockquote :last-child {
 	margin-bottom: 0;
 }
 
+.anchor {
+	position: relative;
+}
+
+.anchor-link {
+	background: red;
+	position: absolute;
+	transform: translate(calc(-100% - 0.5rem), 0);
+	height: 1lh;
+	aspect-ratio: 1;
+}
+
 /* handle styles for CodePen embeds */
 @media screen and (min-width: 1160px){
 	.wp-block-cp-codepen-gutenberg-embed-block.cp_embed_wrapper {
