@@ -8,6 +8,7 @@
 	@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 	font-family: 'Merriweather', serif;
 	line-height: 1.75;
+	scroll-behavior: smooth;
 }
 
 /* Copied from Gatsby Blogfolio */
@@ -114,6 +115,22 @@ blockquote {
 
 blockquote :last-child {
 	margin-bottom: 0;
+}
+
+.anchor {
+	position: relative;
+}
+
+.anchor-link {
+	position: absolute;
+	top: 50%;
+	transform: translate(calc(-100% - 0.5rem), -50%);
+	font-size: 1.75rem;
+
+	&:hover,
+	&:focus {
+		text-decoration: underline;	
+	}
 }
 
 /* handle styles for CodePen embeds */
