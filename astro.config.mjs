@@ -16,11 +16,8 @@ export default defineConfig({
         {
           behavior: 'prepend',
           content: {
-            type: 'element',
-            tagName: 'span',
-            properties: {
-              className: ['icon', 'icon-link'], // todo: what icon should we use / do we have access to?
-            },
+            type: 'text',
+            value: '#',
           },
           headingProperties: {
             className: ['anchor'],

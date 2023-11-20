@@ -122,11 +122,15 @@ blockquote :last-child {
 }
 
 .anchor-link {
-	background: red;
 	position: absolute;
-	transform: translate(calc(-100% - 0.5rem), 0);
-	height: 1lh;
-	aspect-ratio: 1;
+	top: 50%;
+	transform: translate(calc(-100% - 0.5rem), -50%);
+	font-size: 1.75rem;
+
+	&:hover,
+	&:focus {
+		text-decoration: underline;	
+	}
 }
 
 /* handle styles for CodePen embeds */
