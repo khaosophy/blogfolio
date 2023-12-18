@@ -7,18 +7,18 @@ date: 2023-11-22
 
 # Section Header Anchors in Astro
 
-If you spend much time on the web reading blogs or documentation, you may have encountered a little *link* icon next to a header. If you click on it, it will "anchor" to that section, meaning it will scroll to it and update the URL. It's a great way to share a specific section of a page with someone else. For example, maybe you're reading up [on Astro components](https://docs.astro.build/en/core-concepts/astro-components), and you want to link a coworker specifically to [the section on "Slots."](https://docs.astro.build/en/core-concepts/astro-components/#slots) Astro gives you the ability to do that! 
+If you spend much time on the web reading blogs or documentation, you may have encountered a little *link* icon next to a header. If you click on it, it will "anchor" to that section, meaning it will scroll to it and update the URL. It's a great way to share a specific section of a page with someone else. For example, maybe you're reading up [on Astro components](https://docs.astro.build/en/core-concepts/astro-components), and you want to link a coworker specifically to [the section on "Slots."](https://docs.astro.build/en/core-concepts/astro-components/#slots) Astro gives you the ability to do that! Just click on the link icon, copy the updated URL, and share. 
 
-Just click on the link icon, copy the updated URL, and share. In order to accomplish this in your own project, you need two things:
+In order to accomplish this in your own project, you need two things:
 
-1. Something needs to have a unique ID, typically a header
-2. You need something for the user to click to update the URL
+1. An element needs to have a unique ID, typically a header
+2. You need an element for the user to click
 
-In this post, I will walk you through how to set it up in an Astro project when using markdown for the content. Although the exact steps are specific to Astro and markdown, the packages are not, and can be adjusted to work pretty much anywhere.
+In this post, I will walk you through how to set it up in an Astro project that uses markdown for content. Although the *exact* steps are specific to Astro with markdown, the packages are not. You can use them pretty much anywhere that uses JavaScript.
 
 ## Examples Across the Web
 
-I mentioned Astro as an example above, but there are lots of places that utilize this pattern. Here are some more examples I found in my research.
+I mentioned Astro as an example above, but there are lots of places that utilize this pattern. Here are some examples I found in my research.
 
 <figure>
   <img src="/images/blog/astro-header-anchors/astro-slots.png" alt="screenshot of part of the Astro documentation" />
@@ -37,7 +37,7 @@ I mentioned Astro as an example above, but there are lots of places that utilize
 
 ### Generate Unique IDs
 
-In order to have an anchor, you need to have a unique ID. You could manually include this throughout your content by including it in the code, like `<h3 id="unique-ids">Unique IDs</h3>`, but we wouldn't be developers if we wanted to do things manually. Thankfully there is a quick and painless way to do it programmatically: [rehype-slug](https://github.com/rehypejs/rehype-slug).
+In order to have an anchor on your page, you need to have a unique ID. You could manually include this throughout your content by including it in the code, like `<h3 id="unique-id">Unique ID</h3>`, but we wouldn't be developers if we wanted to do things manually. Besides, we're using markdown for our code, and although you can use HTML in markdown, that breaks the spirit. Thankfully there is a quick and painless way to do it programmatically: [rehype-slug](https://github.com/rehypejs/rehype-slug).
 
 1. `npm install rehype-slug`
 1. Configure the package in `astro.config.mjs`
@@ -54,7 +54,7 @@ In order to have an anchor, you need to have a unique ID. You could manually inc
           ...
         });
         ```
-1. Celebrate how easy that was
+1. Celebrate how easy that was.
 
 ## Building the Link
 
