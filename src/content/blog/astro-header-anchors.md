@@ -147,6 +147,18 @@ There are several types of behaviors that this package supports:
 
 No option here is better or worse than another. What works for you will depend on what you are trying to accomplish. Although note that if you use `wrap` and a `content` option, the package will concatenate the content to the end of the heading text (`Title#`, for example).
 
+#### Content
+
+TODO
+
+#### Properties
+
+TODO
+
+## CSS
+
+TODO (include smooth scroll)
+
 ## A Note on Rehype
 
 Throughout this process we relied on two packages to do our heavy lifting, `rehype-slug` and `rehype-autolink-headings`. Both are plugins for `rehype`, which is a project that transforms content -- specifically HTML -- using ASTs or abstract syntax trees. Delving deeper into this topic is well beyond the scope of this blog post, but you can learn more about the core project at [unifiedjs.com](unifiedjs.com).
