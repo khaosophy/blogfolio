@@ -58,33 +58,94 @@ In order to have an anchor on your page, you need to have a unique ID. You could
 
 ## Building the Link
 
-Now that each heading has a unique ID, we can start building out the link system on top of it. 
+Now that each heading has a unique ID -- the anchor -- we can start building out the links. For this step, we'll use the [rehype-autolink-headings](https://github.com/rehypejs/rehype-autolink-headings) package for this step. As the previous package automatically added a unique ID to each header, this package automatically wraps each header with a link. 
 
-1. Let's install `rehype-autolink-headings` to get started.
-1. Then we need to configure the package in `astro.config.mjs`, just like we did before:
-    ```
-    rehypePlugins: [
-        rehypeSlug,
-        [
-          rehypeAutolinkHeadings,
-          {
-            behavior: 'prepend',
-            content: {
-              type: 'text',
-              value: '#',
-            },
-            headingProperties: {
-              className: ['anchor'],
-            },
-            properties: {
-              className: ['anchor-link'],
-            },
+1. `npm install rehype-autolink-headings`
+1. Configure the package in `astro.config.mjs`
+    1. Import the package (`import rehypeAutolinkHeadings from 'rehype-autolink-headings'`)
+    2. Add to the configuration:
+        ```
+        export default defineConfig({
+          ...
+          markdown: {
+            rehypePlugins: [
+              rehypeSlug,
+              [
+                rehypeAutolinkHeadings,
+                {
+                  behavior: 'prepend',
+                  content: {
+                    type: 'text',
+                    value: '#',
+                  },
+                  headingProperties: {
+                    className: ['anchor'],
+                  },
+                  properties: {
+                    className: ['anchor-link'],
+                  },
+                },
+              ],
+            ],
           },
-        ],
-      ]
+          ...
+        });
+        ```
+
+These are the settings I'm using on my blog, but there is a *ton* you can customize. You can check out [the documentation for their options](https://github.com/rehypejs/rehype-autolink-headings#options), but let's go over them here too.
+
+### Autolink Options
+
+There is a ton of customization available in `rehype-autolink-headings`. The code snippet above is what I'm using on this blog, at least at the time of writing, but they did take me some time to work out, so let's go over them a bit.
+
+#### Behavior
+
+There are several types of behaviors that this package supports:
+
+1. `prepend` (default) inserts the link before the heading text.<br />
+    ```
+    <h1 id="unique">Title</h1>
+    <!-- becomes... -->
+    <h1 id="unique">
+      <a href="#unique">#</a>
+      Title
+    </h1>
+    ```
+1. `append` inserts the link after the heading text.<br />
+    ```
+    <h1 id="unique">Title</h1>
+    <!-- becomes... -->
+    <h1 id="unique">
+      Title
+      <a href="#unique">#</a>
+    </h1>
+    ```
+1. `wrap` wraps the heading text.<br />
+    ```
+    <h1 id="unique">Title</h1>
+    <!-- becomes... -->
+    <h1 id="unique">
+      <a href="#unique">
+        Title
+      </a>
+    </h1>
+    ```
+1. `before` inserts the link before the heading tag.<br />
+    ```
+    <h1 id="unique">Title</h1>
+    <!-- becomes... -->
+    <a href="#unique">#</a>
+    <h1 id="unique">Title</h1>
+    ```
+1. `after` inserts the link after the heading tag.<br />
+    ```
+    <h1 id="unique">Title</h1>
+    <!-- becomes... -->
+    <h1 id="unique">Title</h1>
+    <a href="#unique">#</a>
     ```
 
-These are the settings I'm using on my blog, but there is a *ton* you can customize. You can check out [the documentation for their options](https://github.com/rehypejs/rehype-autolink-headings#options), but we'll go over some of them here too, hopefully illuminating some things.
+No option here is better or worse than another. What works for you will depend on what you are trying to accomplish. Although note that if you use `wrap` and a `content` option, the package will concatenate the content to the end of the heading text (`Title#`, for example).
 
 ## A Note on Rehype
 
