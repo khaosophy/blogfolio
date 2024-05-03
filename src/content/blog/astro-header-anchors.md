@@ -58,7 +58,7 @@ The plugin automatically gives each heading element a unique ID based on the tex
 
 ## Building the Link
 
-Now that each heading has a unique ID -- the anchor -- we can start building out the links. For this step, we'll use the [rehype-autolink-headings](https://github.com/rehypejs/rehype-autolink-headings) package. As the previous package automatically added a unique ID to each header, this package automatically wraps each header with a link. 
+Now that each heading has a unique ID, we can start building out the links. For this step, we'll use the [rehype-autolink-headings](https://github.com/rehypejs/rehype-autolink-headings) package. As the previous package automatically added a unique ID to each header, this package automatically wraps each header with a link (*wraps* is the default behavior). 
 
 1. `npm install rehype-autolink-headings`
 1. Configure the package in `astro.config.mjs`
@@ -92,11 +92,11 @@ Now that each heading has a unique ID -- the anchor -- we can start building out
         });
         ```
 
-These are the settings I'm using on my blog, but there is a *ton* you can customize. You can check out [the documentation for their options](https://github.com/rehypejs/rehype-autolink-headings#options), but let's go over them here too.
+These are the settings I'm using on my blog, but there is a *ton* you can customize. You can check out [the documentation for their options](https://github.com/rehypejs/rehype-autolink-headings#options), but let's go over them here too, because it isn't obvious how it translate to use in Astro.
 
 ### Autolink Options
 
-There is a ton of customization available in `rehype-autolink-headings`. The code snippet above is what I'm using on this blog, at least at the time of writing, but they did take me some time to work out, so let's go over them a bit.
+There is a ton of customization available in `rehype-autolink-headings`. The docs are good, but they don't necessarily translate to Astro one-to-one, so let's go over them a bit.
 
 #### Behavior
 
@@ -180,9 +180,9 @@ If you do not include this field, it defaults to `<span class="icon icon-link"><
 
 #### Properties
 
-The properties option allows you to define attributes on the link that the plugin is adding to the markup. For example, if you want a class name or a data attribute -- or something for accessibility -- this would be the place to do it.
+The properties option allows you to define attributes on the element that the plugin is adding to the markup and the heading is being manipulated. For example, if you want a class name, or a data attribute, or something for accessibility, this setting is the place to do it.
 
-We are using both `headingProperties` and regular `properties`. The `headingProperties` modifies the heading element that is being used as the anchor, while `properties` modifies the added `a` element. Without either, for example, this is the markup that gets added to our DOM:
+This blog is using both `headingProperties` and regular `properties` options. The `headingProperties` modifies the heading element that is being used as the anchor, while `properties` modifies the added `a` element. Without either, for example, this is the markup that gets added to our DOM (assuming `behavier` is `prepend`):
 
 ```
 <h1 id="unique">
