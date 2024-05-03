@@ -180,7 +180,36 @@ If you do not include this field, it defaults to `<span class="icon icon-link"><
 
 #### Properties
 
-TODO
+The properties option allows you to define attributes on the link that the plugin is adding to the markup. For example, if you want a class name or a data attribute -- or something for accessibility -- this would be the place to do it.
+
+We are using both `headingProperties` and regular `properties`. The `headingProperties` modifies the heading element that is being used as the anchor, while `properties` modifies the added `a` element. Without either, for example, this is the markup that gets added to our DOM:
+
+```
+<h1 id="unique">
+  <a href="#unique">#</a>
+  Title
+</h1>
+```
+
+But when we add the following properties options to our `astro.config.mjs`, the markup changes to include our custom class names.
+
+```
+# astro.config.mjs
+headingProperties: {
+  className: ['anchor'],
+},
+properties: {
+  className: ['anchor-link'],
+},
+
+# Updated HTML
+<h1 id="unique" class="anchor">
+  <a href="#unique" class="anchor-link">#</a>
+  Title
+</h1>
+```
+
+This works for other properties in the same way, like `dataUrl: 'localhost'` would be added to the element as `data-url="localhost"`.
 
 ## CSS
 
