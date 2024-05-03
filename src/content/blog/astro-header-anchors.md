@@ -16,7 +16,7 @@ In this post, I will walk you through how to set it up in an Astro project that 
 
 ## Examples Across the Web
 
-I mentioned Astro as an example above, but there are lots of places that utilize this pattern. Here are some examples I found in my research.
+I mentioned Astro as an example, but there are lots of places that utilize this pattern. Here are just a few examples I found around the web.
 
 <figure>
   <img src="/images/blog/astro-header-anchors/astro-slots.png" alt="screenshot of part of the Astro documentation" />
@@ -35,7 +35,7 @@ I mentioned Astro as an example above, but there are lots of places that utilize
 
 ### Generate Unique IDs
 
-In order to have an anchor on your page, you need to have a unique ID. You could manually include this throughout your content by including it in the code, like `<h3 id="unique-id">Unique ID</h3>`, but we wouldn't be developers if we wanted to do things manually. Besides, we're using markdown for our code, and although you can use HTML in markdown, that breaks the spirit. Thankfully there is a quick and painless way to do it programmatically: [rehype-slug](https://github.com/rehypejs/rehype-slug).
+In order to have an anchor on your page, you need to have a unique ID. You could manually include this throughout your content by including it in the code, like `<h3 id="unique-id">Unique ID</h3>`, but we wouldn't be developers if we wanted to do things manually. Besides, we're using markdown for our code, and although you *can* use HTML in markdown, that defeats the purpose. Thankfully there is a quick and painless way to add these IDs programmatically: [rehype-slug](https://github.com/rehypejs/rehype-slug).
 
 1. `npm install rehype-slug`
 1. Configure the package in `astro.config.mjs`
@@ -53,6 +53,8 @@ In order to have an anchor on your page, you need to have a unique ID. You could
         });
         ```
 1. Celebrate how easy that was.
+
+The plugin automatically gives each heading element a unique ID based on the text in the element. It even *still* makes sure the IDs are unique, even if you have two headings that have the same text.
 
 ## Building the Link
 
