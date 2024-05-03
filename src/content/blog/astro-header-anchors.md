@@ -5,8 +5,6 @@ excerpt: Ever see a link icon next to a header when reading a blog post or piece
 date: 2023-11-22
 ---
 
-# Section Header Anchors in Astro
-
 If you spend much time on the web reading blogs or documentation, you may have encountered a little *link* icon next to a header. If you click on it, it will "anchor" to that section, meaning it will scroll to it and update the URL. It's a great way to share a specific section of a page with someone else. For example, maybe you're reading up [on Astro components](https://docs.astro.build/en/core-concepts/astro-components), and you want to link a coworker specifically to [the section on "Slots."](https://docs.astro.build/en/core-concepts/astro-components/#slots) Astro gives you the ability to do that! Just click on the link icon, copy the updated URL, and share. 
 
 In order to accomplish this in your own project, you need two things:
