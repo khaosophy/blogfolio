@@ -25,7 +25,7 @@ I mentioned Astro as an example, but there are lots of places that utilize this 
 
 <figure>
   <img src="/images/blog/astro-header-anchors/css-tricks-nodes.png" alt="screenshot of a section of a CSS Tricks blog post" />
-  <figcaption>CSS Tricks includes a link icon tot he left of the section title.</figcaption>
+  <figcaption>CSS Tricks includes a link icon to the left of the section title.</figcaption>
 </figure>
 
 <figure>
@@ -100,7 +100,7 @@ There is a ton of customization available in `rehype-autolink-headings`. The doc
 
 #### Behavior
 
-There are several types of behaviors that this package supports:
+There are several types of behavior that this package supports:
 
 1. `prepend` (default) inserts the link before the heading text.<br />
     ```
