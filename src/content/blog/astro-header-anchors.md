@@ -58,7 +58,7 @@ In order to have an anchor on your page, you need to have a unique ID. You could
 
 ## Building the Link
 
-Now that each heading has a unique ID -- the anchor -- we can start building out the links. For this step, we'll use the [rehype-autolink-headings](https://github.com/rehypejs/rehype-autolink-headings) package for this step. As the previous package automatically added a unique ID to each header, this package automatically wraps each header with a link. 
+Now that each heading has a unique ID -- the anchor -- we can start building out the links. For this step, we'll use the [rehype-autolink-headings](https://github.com/rehypejs/rehype-autolink-headings) package. As the previous package automatically added a unique ID to each header, this package automatically wraps each header with a link. 
 
 1. `npm install rehype-autolink-headings`
 1. Configure the package in `astro.config.mjs`
@@ -149,7 +149,34 @@ No option here is better or worse than another. What works for you will depend o
 
 #### Content
 
-TODO
+This setting defines what is going to be *inside* the link itself. For now, I am just using a text with the value `#`, like this:
+
+```
+content: {
+  type: 'text',
+  value: '#',
+}
+```
+
+But if you want to have it be something like `[jump to section]`, you could change it to the following:
+
+```
+content: {
+  type: 'text',
+  value: `[jump to section]`,
+}
+```
+
+You can even specify an HTML element, like if you want to use an icon from Font Awesome or other icon library. Just replace type text with type raw as seen here:
+
+```
+content: {
+  type: 'raw',
+  value: '<i class="fa-solid fa-link"></i>',
+},
+```
+
+If you do not include this field, it defaults to `<span class="icon icon-link"></span>`.
 
 #### Properties
 
