@@ -211,10 +211,6 @@ properties: {
 
 This works for other properties in the same way, like `dataUrl: 'localhost'` would be added to the element as `data-url="localhost"`.
 
-## CSS
-
-TODO (include smooth scroll)
-
 ## A Note on Rehype
 
 Throughout this process we relied on two packages to do our heavy lifting, `rehype-slug` and `rehype-autolink-headings`. Both are plugins for `rehype`, which is a project that transforms content -- specifically HTML -- using ASTs or abstract syntax trees. Delving deeper into this topic is well beyond the scope of this blog post, but you can learn more about the core project at [unifiedjs.com](unifiedjs.com).
