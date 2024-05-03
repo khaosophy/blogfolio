@@ -10,10 +10,10 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^1.0.3",
-    "clsx": "^2.0.0",
-    "dayjs": "^1.11.9",
-    "markdown-it": "^13.0.1",
-    "node-html-parser": "^6.1.5",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.11",
+    "markdown-it": "^14.1.0",
+    "node-html-parser": "^6.1.13",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0"
   },
