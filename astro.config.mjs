@@ -30,5 +30,11 @@ export default defineConfig({
     ]
   },
   site: 'https://caseyjamesperno.com',
-  integrations: [react(), sitemap(), mdx()],
+  integrations: [
+    react(),
+    mdx(),
+    sitemap({
+      filter: (page) => !page.includes('/blog/page/'), // exclude paginated blog pages
+    }),
+  ],
 });

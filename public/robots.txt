@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://caseyjamesperno.com/sitemap-index.xml
