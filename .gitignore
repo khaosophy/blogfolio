@@ -60,6 +60,8 @@ gatsby/public
 
 # astro build output
 dist
+# astro generated types
+.astro
 
 # Mac files
 .DS_Store
