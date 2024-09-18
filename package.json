@@ -9,17 +9,15 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/mdx": "^1.0.3",
-    "clsx": "^2.0.0",
-    "dayjs": "^1.11.9",
-    "markdown-it": "^13.0.1",
-    "node-html-parser": "^6.1.5",
+    "@astrojs/mdx": "^2.3.1",
+    "@astrojs/react": "^3.3.2",
+    "@astrojs/sitemap": "^3.1.4",
+    "astro": "^4.7.1",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.11",
+    "markdown-it": "^14.1.0",
+    "node-html-parser": "^6.1.13",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0"
-  },
-  "devDependencies": {
-    "@astrojs/react": "^3.0.1",
-    "@astrojs/sitemap": "^3.0.3",
-    "astro": "^3.5.5"
   }
 }
